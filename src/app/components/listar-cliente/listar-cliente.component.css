@@ -1,0 +1,306 @@
+.container {
+    padding: 40px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  /* Tarjeta del formulario */
+  .form-card {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(87, 87, 87, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  .form-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
+    gap: 15px;
+    align-items: center;
+    max-width: 100%; /* Asegura que no se desborde fuera del contenedor */
+  }
+  
+  .full-width {
+    grid-column: span 3; /* El botón ocupa las 3 columnas completas */
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .full-width {
+    grid-column: span 2; /* El botón ocupa toda la fila */
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  select {
+    max-width: 100%; /* Garantiza que los inputs no se desborden */
+    width: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #5b5b5b;
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #282727;
+    border: none;
+    width: 100%; /* Asegura que el botón ocupa todo el ancho disponible */
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #5b5b5b;
+    transform: scale(1.05);
+  }
+  
+  .btnFiltrar {
+    padding: 12px;
+    background-color: #282727;
+    border: none;
+    width: 10%; /* Asegura que el botón ocupa todo el ancho disponible */
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  table {
+    border-collapse: separate; /* Permite que se respeten los border-radius */
+    border-spacing: 0; /* Quita los espacios entre celdas */
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Ajusta el valor según tu necesidad */
+    overflow: hidden; /* Asegura que el contenido no sobresalga */
+  }
+  
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    color: white;
+    font-weight: bold;
+    background-color: #282727;
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .pagination-info {
+    display: flex;
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+    gap: 20px;
+    padding: 10px;
+    margin-top: 15px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: fit-content;
+    margin-left: 0; /* Alineado a la izquierda */
+  }
+  
+  .pagination-info p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .pagination-info .number {
+    color: #007bff; /* Azul */
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+  }
+  
+  .modal-content h2 {
+    margin-top: 0;
+  }
+  
+  .modal-content p {
+    margin: 8px 0;
+  }
+  
+  .modal-content button {
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background: #0056b3;
+  }
+  
+  tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Azul claro */
+    border-color: #007bff;
+  }
+  
+  /* Agregar borde azul cuando está seleccionado */
+  tbody tr:hover td {
+    border-bottom: 2px solid #007bff;
+  }
+  
+  /* Estilos para el icono de ojo */
+  .eye-icon {
+    font-size: 18px;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Cambiar color del icono al pasar el mouse */
+  .eye-icon:hover {
+    color: #0056b3;
+    transform: scale(1.2);
+  }
+  
+  /* Ícono de bote de basura */
+  .trash-icon {
+    font-size: 18px;
+    color: #dc3545; /* Rojo */
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Ícono cambia al pasar el mouse */
+  .trash-icon:hover {
+    color: #b02a37; /* Rojo más oscuro */
+    transform: scale(1.2);
+  }
+  
+  /* Efecto base para el skeleton */
+  .skeleton-box {
+    display: block;      /* Cambia de inline-block a block */
+    width: 100%;         /* Ocupa todo el ancho disponible */
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  
+  /* Animación shimmer */
+  .skeleton-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150px;
+    height: 100%;
+    width: 150px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(300px);
+    }
+  }
+  
+  /* Para textos en el skeleton */
+  .skeleton-text {
+    display: inline-block;
+    height: 20px;
+    width: 50px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skeleton-text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100px;
+    height: 100%;
+    width: 100px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    animation: shimmer 1.5s infinite;
+  }
+  
+  .empty-message {
+    background: #f9f9f9;       /* Fondo suave */
+    border: 1px solid #ddd;    /* Borde sutil */
+    border-radius: 8px;        /* Bordes redondeados */
+    padding: 20px;             /* Espacio interno */
+    text-align: center;        /* Centramos el texto */
+    font-size: 1.2em;          /* Tamaño de fuente aumentado */
+    color: #555;               /* Color de texto */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
+    margin-top: 20px;          /* Separación respecto a otros elementos */
+  }
+  
+  

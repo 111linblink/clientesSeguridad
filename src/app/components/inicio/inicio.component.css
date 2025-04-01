@@ -1,0 +1,374 @@
+:root {
+    --primary-pink: #ff2d6f;
+    --hot-pink: #ff0a78;
+    --light-pink: #ff8fab;
+    --soft-pink: #ffc2d1;
+    --deep-pink: #e6005c;
+    --pink-glow: rgba(253, 27, 99, 0.849);
+    --text-color: #4a2a3a;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --light-bg: linear-gradient(135deg, #fff0f5, #fff9fb);
+    --shadow: 0 8px 32px rgba(255, 45, 111, 0.863);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.dashboard-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.dashboard-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(224, 12, 97, 0.658);
+    letter-spacing: -0.5px;
+}
+
+.dashboard-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header-decoration {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: -1;
+}
+
+.decoration-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.6;
+}
+
+.decoration-circle.pink {
+    background: var(--primary-pink);
+    margin-right: -40px;
+}
+
+.decoration-circle.light-pink {
+    background: var(--light-pink);
+    margin-top: 30px;
+}
+
+.decoration-circle.hot-pink {
+    background: var(--hot-pink);
+    margin-left: -40px;
+    margin-top: 15px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.action-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(255, 141, 171, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-pink), var(--hot-pink));
+}
+
+.create-card::before {
+    background: linear-gradient(90deg, var(--primary-pink), var(--hot-pink));
+}
+
+.list-card::before {
+    background: linear-gradient(90deg, var(--light-pink), var(--primary-pink));
+}
+
+.update-card::before {
+    background: linear-gradient(90deg, var(--hot-pink), var(--deep-pink));
+}
+
+.action-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(253, 26, 98, 0.726);
+}
+
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--light-pink), var(--primary-pink));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(255, 45, 111, 0.726);
+}
+
+.create-card .card-icon {
+    background: linear-gradient(135deg, var(--light-pink), var(--primary-pink));
+}
+
+.list-card .card-icon {
+    background: linear-gradient(135deg, var(--soft-pink), var(--light-pink));
+}
+
+.update-card .card-icon {
+    background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
+}
+
+.card-icon svg {
+    width: 36px;
+    height: 36px;
+    fill: white;
+}
+
+.card-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.create-card .card-title {
+    color: var(--deep-pink);
+}
+
+.list-card .card-title {
+    color: var(--primary-pink);
+}
+
+.update-card .card-title {
+    color: var(--hot-pink);
+}
+
+.card-description {
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    opacity: 0.8;
+    flex-grow: 1;
+    max-width: 240px;
+}
+
+.card-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, var(--primary-pink), var(--hot-pink));
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    width: 100%;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(241, 42, 105, 0.753);
+}
+
+.create-card .card-button {
+    background: linear-gradient(45deg, var(--primary-pink), var(--hot-pink));
+}
+
+.list-card .card-button {
+    background: linear-gradient(45deg, var(--light-pink), var(--primary-pink));
+}
+
+.update-card .card-button {
+    background: linear-gradient(45deg, var(--hot-pink), var(--deep-pink));
+}
+
+.card-button span {
+    position: relative;
+    z-index: 2;
+    margin-right: 0.75rem;
+}
+
+.card-button svg {
+    width: 20px;
+    height: 20px;
+    fill: rgb(0, 0, 0);
+    transition: transform 0.3s ease;
+}
+
+.card-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--hot-pink), var(--primary-pink));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.card-button:hover {
+    box-shadow: 0 8px 25px rgba(255, 45, 111, 0.781);
+    transform: translateY(-2px);
+}
+
+.card-button:hover::after {
+    opacity: 1;
+}
+
+.card-button:hover svg {
+    transform: translateX(5px);
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.15;
+}
+
+.floating-circle.large {
+    width: 300px;
+    height: 300px;
+    background: var(--primary-pink);
+    top: 20%;
+    left: 10%;
+    animation: float 12s ease-in-out infinite;
+}
+
+.floating-circle.medium {
+    width: 200px;
+    height: 200px;
+    background: var(--hot-pink);
+    bottom: 15%;
+    right: 10%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+.floating-circle.small {
+    width: 150px;
+    height: 150px;
+    background: var(--light-pink);
+    top: 60%;
+    left: 30%;
+    animation: float 10s ease-in-out infinite 2s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@media (max-width: 768px) {
+    .dashboard-title {
+        font-size: 2.2rem;
+    }
+    
+    .dashboard-subtitle {
+        font-size: 1rem;
+    }
+    
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .action-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .floating-circle {
+        display: none;
+    }
+}
+
+/* Mantenemos los estilos anteriores pero actualizamos las partes de los iconos */
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(62, 255, 45, 0.2);
+    background: linear-gradient(135deg, var(--light-pink), var(--primary-pink));
+}
+
+.card-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.button-icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.card-button:hover .button-icon {
+    transform: translateX(5px);
+}

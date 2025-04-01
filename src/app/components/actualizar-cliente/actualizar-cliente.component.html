@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Atualizar cliente</h1>
+  <div class="form-card">
+    <form (ngSubmit)="onSubmit()" class="form-layout">
+      <div class="form-group">
+        <label for="nombre">Correo del usuario a actualizar</label>
+        <input type="text" id="correoActual" name="correoActual" [(ngModel)]="correoActual"/>
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre"/>
+      </div>
+
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" />
+      </div>
+
+      <div class="form-group">
+        <label for="correo">Nuevo correo electronico</label>
+        <input type="email" id="nuevoCorreo" name="nuevoCorreo" [(ngModel)]="nuevoCorreo" />
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion" />
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" [(ngModel)]="telefono"/>
+      </div>
+
+      <div class="form-group">
+        <label for="estatus">Estado</label>
+        <select id="estatus" name="estatus" [(ngModel)]="estado">
+          <option [value]="null"></option>
+          <option [value]="true">Activo</option>
+          <option [value]="false">Inactivo</option>
+        </select>
+      </div>
+
+      <button type="submit">Guardar Cliente</button>
+    </form>
+  </div>
+</div>

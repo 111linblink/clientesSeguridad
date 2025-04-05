@@ -2,19 +2,27 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface ListarClientes {
+export interface ListarClientesRequest {
   correoElectronico: string;
-  fechaRegistroInicio: string | null; // Permitir null
-  fechaRegistroFin: string | null; // Permitir null
-  estatus: boolean;
+  fechaRegistroDesde: string | null;
+  fechaRegistroHasta: string | null;
   pagina: number;
   tamanoPagina: number;
   firma: string;
 }
 
-export interface EliminarCliente {
-  correo_electronico: string;
+export interface EliminarClienteRequest {
+  nombre: string;
+  correoElectronico: string;
   firma: string;
+}
+
+export interface ClienteListResponse {
+  codigo: number;
+  mensaje: string;
+  clientes: any[];
+  totalPaginas: number;
+  totalElements: number;
 }
 
 @Injectable({
@@ -25,26 +33,14 @@ export class ListarClientesService {
 
   constructor(private http: HttpClient) {}
 
-  listarCliente(listarCliente: ListarClientes): Observable<any> {
-    // Crear los parámetros para la URL
-    let params = new HttpParams()
-      .set('correoElectronico', listarCliente.correoElectronico)
-      .set('fechaRegistroInicio', listarCliente.fechaRegistroInicio ?? '')
-      .set('fechaRegistroFin', listarCliente.fechaRegistroFin ?? '')
-      .set('estatus', listarCliente.estatus.toString())
-      .set('pagina', listarCliente.pagina.toString())
-      .set('tamanoPagina', listarCliente.tamanoPagina.toString())
-      .set('firma', listarCliente.firma);
+  listarCliente(request: ListarClientesRequest): Observable<ClienteListResponse> {
+    return this.http.post<ClienteListResponse>(
+      `${this.apiUrl}API/v1/Clientes/clienteController/listarCliente`, 
+      request
+    );
+}
 
-    // Hacer la solicitud GET con los parámetros
-    return this.http.get<any>(`${this.apiUrl}API/v1/clientes/listarClientes`, {
-      params,
-    });
-  }
-
-  eliminarCliente(eliminarCliente: EliminarCliente): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/API/v1/clientes/eliminar`, {
-      body: eliminarCliente,
-    });
+  eliminarCliente(request: EliminarClienteRequest): Observable<any> {
+    return this.http.delete(`${this.apiUrl}API/v1/Clientes/clienteController/deleteCliente`, { body: request });
   }
 }

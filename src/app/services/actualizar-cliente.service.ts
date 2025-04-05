@@ -3,10 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface ActualizarCliente {
-  correoActual: string;
+  correoElectronico: string;
   nombre: string;
+  newName: string;
   apellido: string;
-  nuevoCorreo: string;
+  nuevoCorreoElectronico: string;
   direccion: string;
   telefono: string;
   estado?: boolean;
@@ -23,7 +24,7 @@ export class ActualizarClienteService {
 
   actualizarCliente(actualizar: ActualizarCliente): Observable<any> {
     return this.http.put(
-      `${this.apiUrl}API/v1/clientes/actualizar`,
+      `${this.apiUrl}API/v1/Clientes/clienteController/updateCliente`,
       actualizar
     );
   }

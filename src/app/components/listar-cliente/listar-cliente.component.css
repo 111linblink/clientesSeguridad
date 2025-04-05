@@ -303,4 +303,13 @@
     margin-top: 20px;          /* Separación respecto a otros elementos */
   }
   
+  .eye-icon, .trash-icon {
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #007bff;
+  }
   
+  .eye-icon:hover, .trash-icon:hover {
+    color: #dc3545; /* Cambia el color al pasar el cursor */
+  }
+    

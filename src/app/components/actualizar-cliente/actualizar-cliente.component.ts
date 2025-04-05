@@ -11,12 +11,13 @@ import { ClienteFirma, FirmaService } from '../../services/firma.service';
   styleUrl: './actualizar-cliente.component.css',
 })
 export class ActualizarClienteComponent {
-  correoActual = '';
   nombre = '';
+  newName = '';
   apellido = '';
-  nuevoCorreo = '';
-  direccion = '';
+  correoElectronico = '';
+  nuevoCorreoElectronico = '';
   telefono = '';
+  direccion = '';
   estado?: boolean;
   firma = '';
 
@@ -27,47 +28,49 @@ export class ActualizarClienteComponent {
 
   onSubmit() {
     const actualizarCli: ActualizarCliente = {
-      correoActual: this.correoActual,
       nombre: this.nombre,
+      newName: this.newName,
       apellido: this.apellido,
-      nuevoCorreo: this.nuevoCorreo,
-      direccion: this.direccion,
+      correoElectronico: this.correoElectronico, 
+      nuevoCorreoElectronico: this.nuevoCorreoElectronico,
       telefono: this.telefono,
+      direccion: this.direccion,
       estado: this.estado,
       firma: this.firma,
     };
 
     const firmaActualizar: ClienteFirma = {
-      correoActual: this.correoActual,
       nombre: this.nombre,
+      newName: this.newName,
       apellido: this.apellido,
-      nuevoCorreo: this.nuevoCorreo,
-      direccion: this.direccion,
+      correoElectronico: this.correoElectronico,
+      nuevoCorreoElectronico: this.nuevoCorreoElectronico,
       telefono: this.telefono,
+      direccion: this.direccion,
       estado: this.estado,
     };
 
-    this.firmaService.generarFirmaCrearCliente(firmaActualizar).subscribe(
+    this.firmaService.generarFirmaActualizarCliente(firmaActualizar).subscribe(
       (firmaGenerada) => {
         actualizarCli.firma = firmaGenerada.firma;
 
-        console.log('Formulario para actualizar el cliente: ',actualizarCli)
-        console.log('Formulario para firma del cliente: ',firmaActualizar)
+        alert('Formulario para actualizar el cliente');
+        alert('Formulario para firma del cliente');
 
         //Actualizar cliente
         this.actualizarClienteService
           .actualizarCliente(actualizarCli)
           .subscribe(
             (response) => {
-              console.log('Cliente actualizado ', response);
+              alert('Cliente actualizado con éxito');
             },
             (error) => {
-              console.error('Error al actualizar el cliente: ', error);
+              alert('Error al actualizar el cliente');
             }
           );
       },
       (error) => {
-        console.error('Error al generar la firma de actualización');
+        alert('Error al generar la firma de actualización: ' + JSON.stringify(error, null, 2));
       }
     );
   }

@@ -1,315 +1,290 @@
+/* Contenedor principal */
 .container {
-    padding: 40px;
-    text-align: center;
-    font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fef7ff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(123, 89, 255, 0.15);
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Encabezado principal */
+.container h1,
+.container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2.2rem;
+  color: #7259aa;
+}
+
+/* Tarjeta del formulario */
+.form-card {
+  background-color: #fff0f8;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(218, 164, 202, 0.25);
+  margin-bottom: 2rem;
+  display: grid;
+  gap: 20px;
+}
+
+/* Diseño de formulario */
+.form-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* Cada grupo del formulario */
+.form-group {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Etiquetas */
+.form-group label {
+  font-weight: 600;
+  color: #575883;
+  margin-bottom: 0.5rem;
+}
+
+/* Inputs */
+.form-group input {
+  padding: 12px;
+  border: 1px solid #c5b8e3;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #a98df0;
+  outline: none;
+  background-color: #f3f0ff;
+}
+
+/* Botón Filtrar */
+.btnFiltrar {
+  background-color: #d19cff;
+  color: white;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10%;
+}
+
+.btnFiltrar:hover {
+  background-color: #b87ef7;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff8fc;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(218, 164, 202, 0.15);
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #f2d4e7;
+}
+
+th {
+  background-color: #f6d1e6;
+  color: #944f82;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background-color: #fde9f4;
+}
+
+/* Iconos */
+.eye-icon,
+.trash-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.eye-icon {
+  color: #9c7fc2;
+}
+
+.eye-icon:hover {
+  color: #7a59b6;
+}
+
+.trash-icon {
+  color: #e87aa0;
+}
+
+.trash-icon:hover {
+  color: #d14670;
+}
+
+/* Información de paginación */
+.pagination-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.pagination-info p {
+  margin: 0.5rem 0;
+}
+
+.number {
+  font-weight: bold;
+  color: #7a59b6;
+}
+
+/* Mensaje vacío */
+.empty-message {
+  text-align: center;
+  font-style: italic;
+  color: #999;
+  margin-top: 2rem;
+}
+
+/* Skeleton loader */
+.skeleton-box {
+  width: 100%;
+  height: 20px;
+  background-color: #f5d9eb;
+  border-radius: 0.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-text {
+  display: inline-block;
+  width: 100px;
+  height: 20px;
+  background-color: #f5d9eb;
+  border-radius: 0.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
   }
-  
-  h1 {
-    margin-bottom: 30px;
-    font-size: 2em;
-    font-weight: bold;
+  50% {
+    opacity: 1;
   }
-  
-  /* Tarjeta del formulario */
-  .form-card {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(87, 87, 87, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+  100% {
+    opacity: 0.6;
   }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(64, 0, 64, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff0f8;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(64, 0, 64, 0.2);
+  width: 90%;
+  max-width: 500px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #b06fb4;
+}
+
+.modal-content p {
+  margin: 0.5rem 0;
+}
+
+/* Botones en modales */
+.modal-content button {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Botón eliminar */
+.btn-danger {
+  background-color: #f285a7;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #d15c85;
+}
+
+/* Botón cancelar */
+.btn-secondary {
+  background-color: #ddd;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #bbb;
+}
+
+/* Transición de modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .form-layout {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
-    gap: 15px;
-    align-items: center;
-    max-width: 100%; /* Asegura que no se desborde fuera del contenedor */
-  }
-  
-  .full-width {
-    grid-column: span 3; /* El botón ocupa las 3 columnas completas */
-  }
-  
-  .form-group {
-    display: flex;
     flex-direction: column;
   }
-  
-  .full-width {
-    grid-column: span 2; /* El botón ocupa toda la fila */
-  }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input,
-  select {
-    max-width: 100%; /* Garantiza que los inputs no se desborden */
-    width: auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border 0.3s ease;
-  }
-  
-  input:focus,
-  select:focus {
-    border-color: #5b5b5b;
-  }
-  
-  button {
-    padding: 12px;
-    background-color: #282727;
-    border: none;
-    width: 100%; /* Asegura que el botón ocupa todo el ancho disponible */
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  button:hover {
-    background-color: #5b5b5b;
-    transform: scale(1.05);
-  }
-  
-  .btnFiltrar {
-    padding: 12px;
-    background-color: #282727;
-    border: none;
-    width: 10%; /* Asegura que el botón ocupa todo el ancho disponible */
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  table {
-    border-collapse: separate; /* Permite que se respeten los border-radius */
-    border-spacing: 0; /* Quita los espacios entre celdas */
-    width: 100%;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px; /* Ajusta el valor según tu necesidad */
-    overflow: hidden; /* Asegura que el contenido no sobresalga */
-  }
-  
-  
-  th,
-  td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    color: white;
-    font-weight: bold;
-    background-color: #282727;
-  }
-  
-  tr:hover {
-    background-color: #f5f5f5;
-  }
-  
+
   .pagination-info {
-    display: flex;
-    justify-content: flex-start; /* Alinea los elementos a la izquierda */
-    gap: 20px;
-    padding: 10px;
-    margin-top: 15px;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    width: fit-content;
-    margin-left: 0; /* Alineado a la izquierda */
-  }
-  
-  .pagination-info p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .pagination-info .number {
-    color: #007bff; /* Azul */
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
-  
+
+  table, th, td {
+    font-size: 0.9rem;
+  }
+
   .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    text-align: left;
+    padding: 1.5rem;
   }
-  
-  .modal-content h2 {
-    margin-top: 0;
-  }
-  
-  .modal-content p {
-    margin: 8px 0;
-  }
-  
-  .modal-content button {
-    display: block;
-    margin-top: 15px;
-    padding: 10px;
-    border: none;
-    background: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .modal-content button:hover {
-    background: #0056b3;
-  }
-  
-  tbody tr:hover {
-    background-color: rgba(0, 123, 255, 0.1); /* Azul claro */
-    border-color: #007bff;
-  }
-  
-  /* Agregar borde azul cuando está seleccionado */
-  tbody tr:hover td {
-    border-bottom: 2px solid #007bff;
-  }
-  
-  /* Estilos para el icono de ojo */
-  .eye-icon {
-    font-size: 18px;
-    color: #007bff;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
-  }
-  
-  /* Cambiar color del icono al pasar el mouse */
-  .eye-icon:hover {
-    color: #0056b3;
-    transform: scale(1.2);
-  }
-  
-  /* Ícono de bote de basura */
-  .trash-icon {
-    font-size: 18px;
-    color: #dc3545; /* Rojo */
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
-  }
-  
-  /* Ícono cambia al pasar el mouse */
-  .trash-icon:hover {
-    color: #b02a37; /* Rojo más oscuro */
-    transform: scale(1.2);
-  }
-  
-  /* Efecto base para el skeleton */
-  .skeleton-box {
-    display: block;      /* Cambia de inline-block a block */
-    width: 100%;         /* Ocupa todo el ancho disponible */
-    height: 20px;
-    background: #e0e0e0;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  
-  /* Animación shimmer */
-  .skeleton-box::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -150px;
-    height: 100%;
-    width: 150px;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(255, 255, 255, 0.4) 50%,
-      transparent 100%
-    );
-    animation: shimmer 1.5s infinite;
-  }
-  
-  @keyframes shimmer {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(300px);
-    }
-  }
-  
-  /* Para textos en el skeleton */
-  .skeleton-text {
-    display: inline-block;
-    height: 20px;
-    width: 50px;
-    background: #e0e0e0;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .skeleton-text::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100px;
-    height: 100%;
-    width: 100px;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(255, 255, 255, 0.4) 50%,
-      transparent 100%
-    );
-    animation: shimmer 1.5s infinite;
-  }
-  
-  .empty-message {
-    background: #f9f9f9;       /* Fondo suave */
-    border: 1px solid #ddd;    /* Borde sutil */
-    border-radius: 8px;        /* Bordes redondeados */
-    padding: 20px;             /* Espacio interno */
-    text-align: center;        /* Centramos el texto */
-    font-size: 1.2em;          /* Tamaño de fuente aumentado */
-    color: #555;               /* Color de texto */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
-    margin-top: 20px;          /* Separación respecto a otros elementos */
-  }
-  
-  .eye-icon, .trash-icon {
-    cursor: pointer;
-    font-size: 1.5em;
-    color: #007bff;
-  }
-  
-  .eye-icon:hover, .trash-icon:hover {
-    color: #dc3545; /* Cambia el color al pasar el cursor */
-  }
-    
+}

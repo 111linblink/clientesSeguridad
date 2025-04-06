@@ -1,10 +1,21 @@
-<div class="container">
+<div class="pastel-actualizar">
   <h1>Actualizar cliente</h1>
+
+  <!-- Formulario de actualización -->
   <div class="form-card">
-    <form (ngSubmit)="onSubmit()" class="form-layout">
+    <form (ngSubmit)="onSubmit()" class="pastel-form-grid">
+      
+      <!-- Buscador de cliente -->
       <div class="form-group">
-        <label for="nombre">Correo del usuario a actualizar</label>
-        <input type="text" id="correoElectronico" name="correoElectronico" [(ngModel)]="correoElectronico"/>
+        <label for="correoElectronico">Correo del usuario a actualizar</label>
+        <input 
+          type="text" 
+          id="correoElectronico" 
+          name="correoElectronico" 
+          [(ngModel)]="correoElectronico"
+          (ngModelChange)="cargarDatosCliente()" 
+          placeholder="Introduce el correo para buscar el cliente"
+        />
       </div>
 
       <div class="form-group">
@@ -13,23 +24,23 @@
       </div>
 
       <div class="form-group">
-        <label for="nombre">Nuevo nombre</label>
+        <label for="newName">Nuevo nombre</label>
         <input type="text" id="newName" name="newName" [(ngModel)]="newName"/>
       </div>
 
       <div class="form-group">
         <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" />
+        <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido"/>
       </div>
 
       <div class="form-group">
-        <label for="correo">Nuevo correo electronico</label>
-        <input type="email" id="nuevoCorreoElectronico" name="nuevoCorreoElectronico" [(ngModel)]="nuevoCorreoElectronico" />
+        <label for="nuevoCorreoElectronico">Nuevo correo electrónico</label>
+        <input type="email" id="nuevoCorreoElectronico" name="nuevoCorreoElectronico" [(ngModel)]="nuevoCorreoElectronico"/>
       </div>
 
       <div class="form-group">
         <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion" />
+        <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion"/>
       </div>
 
       <div class="form-group">
@@ -46,7 +57,33 @@
         </select>
       </div>
 
-      <button type="submit">Guardar Cliente</button>
+      <div class="form-actions">
+        <button type="submit">Guardar Cliente</button>
+      </div>
     </form>
+
+        <!-- Modal personalizado -->
+    <div class="modal-overlay" *ngIf="mostrarModal">
+      <div class="modal-card">
+        <h2>Cliente Actualizado</h2>
+        <p><strong>Nombre:</strong> {{ clienteActualizado.newName || clienteActualizado.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ clienteActualizado.apellido }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ clienteActualizado.nuevoCorreoElectronico || clienteActualizado.correoElectronico }}</p>
+        <p><strong>Teléfono:</strong> {{ clienteActualizado.telefono }}</p>
+        <p><strong>Dirección:</strong> {{ clienteActualizado.direccion }}</p>
+        <p><strong>Estado:</strong> {{ clienteActualizado.estado ? 'Activo' : 'Inactivo' }}</p>
+
+        <button (click)="mostrarModal = false">Cerrar</button>
+      </div>
+    </div>
+
+      <!-- Modal personalizado -->
+  <div class="modal-overlay" *ngIf="mostrarModal2">
+    <div class="modal-card">
+      <h2>Error al actualizar el cliente</h2>
+      <button (click)="mostrarModal2 = false">Cerrar</button>
+    </div>
+  </div>
+
   </div>
 </div>

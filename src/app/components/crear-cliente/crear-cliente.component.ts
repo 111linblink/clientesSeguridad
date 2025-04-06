@@ -35,9 +35,10 @@ export class CrearClienteComponent {
 
     const nuevoClienteFirma: ClienteFirma = {
       nombre: this.nombre,
+      newName: '',
       apellido: this.apellido,
-      correoActual: this.correoElectronico,
-      nuevoCorreo: '',
+      correoElectronico: this.correoElectronico,
+      nuevoCorreoElectronico: '',
       telefono: this.telefono,
       direccion: this.direccion,
       estado: null,

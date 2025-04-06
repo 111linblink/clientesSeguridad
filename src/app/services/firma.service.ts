@@ -4,18 +4,27 @@ import { Observable } from 'rxjs';
 
 export interface CrearFirmaListarClientes {
   correoElectronico: string;
-  fechaRegistroInicio: string | null; // Permitir null
-  fechaRegistroFin: string | null; // Permitir null
-  estatus: boolean;
+  fechaRegistroDesde: string | null;
+  fechaRegistroHasta: string | null;
   pagina: number;
   tamanoPagina: number;
 }
 
+export interface FirmaEliminarRequest {
+  correoElectronico: string;
+  nombre: string;
+}
+
+export interface FirmaResponse {
+  firma: string;
+}
+
 export interface ClienteFirma {
   nombre: string;
+  newName: string;
   apellido: string;
-  correoActual: string;
-  nuevoCorreo: string;
+  correoElectronico: string;
+  nuevoCorreoElectronico: string;
   telefono: string;
   direccion: string;
   estado?: boolean | null;
@@ -25,21 +34,35 @@ export interface ClienteFirma {
   providedIn: 'root'
 })
 export class FirmaService {
-
   private apiUrl = 'http://localhost:8035/';
 
   constructor(private http: HttpClient) {}
 
-  generarFirmaListarCliente(
-    listaFirma: CrearFirmaListarClientes
-  ): Observable<any> {
-    return this.http.post<string>(
+  generarFirmaListarCliente(request: CrearFirmaListarClientes): Observable<FirmaResponse> {
+    return this.http.post<FirmaResponse>(
       `${this.apiUrl}firma/generar-firma-paginado`,
-      listaFirma
+      request
     );
   }
 
-  generarFirmaCrearCliente(clienteFirma: ClienteFirma): Observable<any> {
-      return this.http.post<string>(`${this.apiUrl}firma/generar-firma`, clienteFirma);
-    }
+  generarFirmaEliminarCliente(request: FirmaEliminarRequest): Observable<FirmaResponse> {
+    return this.http.post<FirmaResponse>(
+      `${this.apiUrl}firma/generarFirmaEliminar`,
+      request
+    );
+  }
+
+  generarFirmaCrearCliente(clienteFirma: ClienteFirma): Observable<FirmaResponse> {
+    return this.http.post<FirmaResponse>(
+      `${this.apiUrl}firma/generarFirmaCrear`, 
+      clienteFirma
+    );
+  }
+
+  generarFirmaActualizarCliente(clienteFirma: ClienteFirma): Observable<FirmaResponse> {
+    return this.http.post<FirmaResponse>(
+      `${this.apiUrl}firma/generarFirmaActualizar`, 
+      clienteFirma
+    );
+  }
 }

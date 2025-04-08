@@ -1,39 +1,41 @@
-<div class="canal-container">
+<div class="canal-container pastel">
     <div class="canal-header">
-        <h2>Selecciona un medio para recibir tu codigo de acceso</h2>
+      <h2>Medio de verificación</h2>
     </div>
-
+  
     <div class="canal-form">
-        <div class="form-group">
-            <label for="canal">Selecciona canal:</label>
-            <select 
-              [(ngModel)]="canal" 
-              name="canal" 
-              (change)="seleccionarCanal()"
-              class="form-select">
-                <option value="correo">Correo Electrónico</option>
-                <option value="sms">SMS</option>
-            </select>
-        </div>
-
-        <div class="form-group" *ngIf="canal === 'sms'">
-            <label for="telefono">Teléfono (incluye código de país)</label>
-            <input 
-              type="text" 
-              id="telefono" 
-              [(ngModel)]="telefono" 
-              name="telefono" 
-              class="form-input"
-              placeholder="+521234567890">
-        </div>
-
-        <div class="form-actions">
-            <button 
-              (click)="seleccionarCanal()" 
-              [disabled]="!canal" 
-              class="submit-button">
-                Enviar OTP
-            </button>
-        </div>
+      <div class="form-group">
+        <label for="canal">Selecciona:</label>
+        <select 
+          [(ngModel)]="canal" 
+          name="canal" 
+          (change)="seleccionarCanal()"
+          class="form-control">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="correo">Correo Electrónico</option>
+          <option value="sms">SMS</option>
+        </select>
+      </div>
+  
+      <div class="form-group" *ngIf="canal === 'sms'">
+        <label for="telefono">Teléfono (incluye código de país)</label>
+        <input 
+          type="text" 
+          id="telefono" 
+          [(ngModel)]="telefono" 
+          name="telefono" 
+          class="form-control"
+          placeholder="+521234567890">
+      </div>
+  
+      <div class="form-actions">
+        <button 
+          (click)="seleccionarCanal()" 
+          [disabled]="!canal" 
+          class="submit-button">
+          Enviar OTP
+        </button>
+      </div>
     </div>
-</div>
+  </div>
+  

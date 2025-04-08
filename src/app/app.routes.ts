@@ -9,17 +9,19 @@ import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/
 import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
 import { SeleccionarCanalComponent } from './components/seleccionar-canal/seleccionar-canal.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MiCuentaComponent } from './components/mi-cuenta/mi-cuenta.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: InicioComponent },
-  { path: 'crearCliente', component: CrearClienteComponent },
-  {path: 'listarClientes', component:ListarClientesComponent},
-  { path: 'actualizarCliente', component: ActualizarClienteComponent },
+  { path: '', component: InicioComponent, canActivate: [authGuard]},
+  { path: 'crearCliente', component: CrearClienteComponent, canActivate: [authGuard]},
+  {path: 'listarClientes', component:ListarClientesComponent, canActivate: [authGuard]},
+  { path: 'actualizarCliente', component: ActualizarClienteComponent, canActivate: [authGuard]},
   {path:'navbar', component: NavbarComponent},
-  { path: 'actualizarCliente', component: ActualizarClienteComponent },
   { path:'registro', component:RegisterComponent},
   { path:'login', component:LoginComponent},
   { path:'recuperar-contrasena', component:RecuperarContrasenaComponent},
   { path:'verificar-otp', component:OtpVerificationComponent},
-  { path:'seleccionar-canal', component:SeleccionarCanalComponent}
+  { path:'seleccionar-canal', component:SeleccionarCanalComponent},
+  {path:'micuenta', component:MiCuentaComponent, canActivate: [authGuard]}
 ];

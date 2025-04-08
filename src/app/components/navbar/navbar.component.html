@@ -1,46 +1,70 @@
-<!-- NAVBAR SUPERIOR -->
-<nav class="top-navbar">
-    <div class="navbar-left">
-        <a href="/" class="navbar-brand">
-            <h1>Manejo de Clientes</h1>
+<nav class="navbar navbar-expand-lg" style="background-color: #F291A3;">
+    <div class="container-fluid">
+        <!-- Logo y nombre -->
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <!-- <img src="https://png.pngtree.com/png-clipart/20190604/original/pngtree-customer-service-content-png-image_1654797.jpg" alt="logo" width="80" height="80"> -->
+            <span class="navbar-text ms-2 text-white">Manejo de clientes</span>
         </a>
-    </div>
-    
-    <!-- MENÚ DE NAVEGACIÓN dentro del navbar superior -->
-    <div class="navbar-menu">
-        <a href="/crearCliente" class="nav-link" id="create-link">Crear Cliente</a>
-        <a href="/listarClientes" class="nav-link" id="list-link">Listar Clientes</a>
-        <a href="/actualizarCliente" class="nav-link" id="update-link">Actualizar Cliente</a>
-    </div>
 
-    <div class="navbar-right">
-        <button class="notification-btn">
-            <i class="fas fa-bell"></i>
-            <span class="notification-badge">3</span>
+        <!-- Botón menú móvil CORREGIDO -->
+        <button 
+            class="navbar-toggler ms-3" 
+            type="button" 
+            (click)="toggleNavbar()"
+            aria-controls="navbarNav" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
         </button>
-        
-        <div class="user-profile">
-            <img src="" alt="Usuario">
-            <span>Hola</span>
+
+        <!-- Menú colapsable en móviles -->
+        <div class="collapse navbar-collapse" id="navbarNav" #navbarCollapse>
+            <!-- Íconos de carrito y usuario alineados a la derecha -->
+            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center gap-3 ms-lg-auto">
+                <!-- Ícono del carrito -->
+                <a href="crearCliente" class="icon-link1" (click)="closeNavbar()">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="icon-text">Crear</span>
+                  </a>
+                  <a href="listarClientes" class="icon-link1" (click)="closeNavbar()">
+                    <i class="fas fa-list"></i>
+                    <span class="icon-text">Listar</span>
+                  </a>
+                  <a href="actualizarCliente" class="icon-link1" (click)="closeNavbar()">
+                    <i class="fas fa-user-edit"></i>
+                    <span class="icon-text">Editar</span>
+                  </a>                  
+
+                <!-- Menú desplegable de "Mi Cuenta" -->
+                <div class="dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()">
+                    <a 
+                        class="icon-link2 dropdown-toggle" 
+                        href="#" 
+                        role="button" 
+                        id="dropdownMenuLink" 
+                        data-bs-toggle="dropdown" 
+                        aria-expanded="false"
+                    >
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink" id="accountDropdown">
+                        <!--<li><a class="dropdown-item" href="pedidos">Pedidos</a></li>-->
+                        <li *ngIf="!isAuthenticated()">
+                            <a class="dropdown-item" href="login">Iniciar sesión</a>
+                          </li>
+                          <!-- Mostrar "Mi cuenta" si el usuario está autenticado -->
+                          <li *ngIf="isAuthenticated()">
+                            <a class="dropdown-item" href="micuenta">Mi cuenta</a>
+                          </li>
+                          <li><hr class="dropdown-divider" /></li>
+                          <!-- Mostrar "Cerrar sesión" si el usuario está autenticado -->
+                          <li *ngIf="isAuthenticated()">
+                            <a class="dropdown-item" (click)="logout()">Cerrar sesión</a>
+                          </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
-
-<script>
-    // Obtiene la ruta actual de la página
-    const currentPath = window.location.pathname;
-
-    // Define los enlaces de la barra de navegación
-    const createLink = document.getElementById('create-link');
-    const listLink = document.getElementById('list-link');
-    const updateLink = document.getElementById('update-link');
-
-    // Agrega la clase 'active' al enlace correspondiente según la página actual
-    if (currentPath.includes('crearCliente')) {
-        createLink.classList.add('active');
-    } else if (currentPath.includes('listarClientes')) {
-        listLink.classList.add('active');
-    } else if (currentPath.includes('actualizarCliente')) {
-        updateLink.classList.add('active');
-    }
-</script>

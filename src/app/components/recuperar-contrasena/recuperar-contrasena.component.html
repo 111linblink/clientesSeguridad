@@ -1,0 +1,32 @@
+<div class="recuperar-container">
+    <div class="recuperar-header">
+      <h2>Recuperar Contraseña</h2>
+    </div>
+  
+    <form (ngSubmit)="onRecuperarContrasena()" class="recuperar-form">
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input 
+          type="email" 
+          id="email" 
+          [(ngModel)]="usuarioRequest.email" 
+          name="email" 
+          class="form-control"
+          required 
+          #email="ngModel"
+        />
+        <div *ngIf="email.invalid && email.touched" class="text-danger">
+          El correo electrónico es obligatorio.
+        </div>
+      </div>
+  
+      <div *ngIf="mensaje" class="alert alert-info">
+        {{ mensaje }}
+      </div>
+  
+      <button type="submit" [disabled]="!usuarioRequest.email" class="btn btn-primary">
+        Recuperar Contraseña
+      </button>
+    </form>
+  </div>
+  

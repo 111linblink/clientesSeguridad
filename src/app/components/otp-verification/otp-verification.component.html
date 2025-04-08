@@ -1,0 +1,41 @@
+<div class="otp-container">
+    <div class="otp-header">
+        <h2>Verifica tu codigo para continuar</h2>
+    </div>
+
+    <!-- Mostrar mensaje de error si lo hay -->
+    <div *ngIf="mensajeError" class="error-message">
+      {{ mensajeError }}
+    </div>
+
+    <!-- Mostrar mensaje de éxito si lo hay -->
+    <div *ngIf="mensajeExito" class="success-message">
+      {{ mensajeExito }}
+    </div>
+
+    <form (ngSubmit)="verificarOTP()" #otpForm="ngForm" class="otp-form">
+        <div class="form-group">
+            <label for="otp">Código OTP</label>
+            <input
+              type="text" 
+              id="otp" 
+              [(ngModel)]="otp" 
+              name="otp" 
+              required
+              #otpField="ngModel"
+              placeholder="Ingresa tu código de verificación">
+            <div *ngIf="otpField.invalid && otpField.touched" class="error-message">
+                <small>El código OTP es obligatorio.</small>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" 
+                    [disabled]="otpForm.invalid || cargando" 
+                    class="submit-button">
+                {{ cargando ? 'Verificando...' : 'Verificar OTP' }}
+            </button>
+        </div>
+        
+    </form>
+</div>

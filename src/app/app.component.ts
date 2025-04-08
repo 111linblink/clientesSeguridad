@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,ToastrModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

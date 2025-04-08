@@ -9,6 +9,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class AuthService {
   private apiUrl = 'http://localhost:8035/API/v1/USUARIOS/usuariosController'; 
   private authApiUrl = 'http://localhost:8035/api/auth'; // Nueva URL para autenticación
+  private resApiUrl='http://localhost:8035/api/usuarios'
 
   constructor(private http: HttpClient) { }
 
@@ -20,12 +21,6 @@ export class AuthService {
         return throwError('Hubo un error al intentar iniciar sesión');
       })
     );
-  }
-  
-
-  // Método para recuperar la contraseña
-  recuperarContrasena(usuariosRequest: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/recuperarContrasena`, usuariosRequest);
   }
 
   register(usuarioRequest: any): Observable<any> {
@@ -44,6 +39,20 @@ export class AuthService {
         return throwError('Hubo un error al intentar verificar el OTP');
       })
     );
+  }
+
+  recuperarContrasena(email: string): Observable<any> {
+    return this.http.post(`${this.resApiUrl}/recuperar-contrasena`, { email });
+  }
+
+  // Validar token de recuperación
+  validarToken(token: string): Observable<any> {
+    return this.http.post(`${this.resApiUrl}/validar-token`, { token });
+  }
+
+  // Restablecer la contraseña
+  restablecerContrasena(token: string, nuevaContrasena: string): Observable<any> {
+    return this.http.post(`${this.resApiUrl}/restablecer-contrasena`, { token, nuevaContrasena });
   }
   
   

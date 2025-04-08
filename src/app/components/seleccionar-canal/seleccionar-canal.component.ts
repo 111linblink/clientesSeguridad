@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-seleccionar-canal',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './seleccionar-canal.component.html',
   styleUrl: './seleccionar-canal.component.css'
 })
@@ -46,14 +46,23 @@ export class SeleccionarCanalComponent {
   
     this.authService.enviarOtp(otpRequest).subscribe({
       next: (response) => {
-        this.toastr.success(response); // Aquí 'response' será el texto plano del backend
-        this.router.navigate(['/verificar-otp'], { queryParams: { email: this.email, canal: this.canal } });
+        console.log(response);  // Asegúrate de que esta línea imprima lo esperado
+        this.toastr.success(response); // Mostrar mensaje de éxito
+        // Aquí revisa si la redirección es correcta para SMS
+        if (this.canal === 'sms') {
+          this.router.navigate(['/verificar'], { queryParams: { email: this.email, canal: this.canal } });
+        } else {
+          // Redirige al flujo de correo
+          this.router.navigate(['/verificar'], { queryParams: { email: this.email, canal: this.canal } });
+        }
       },
       error: (err) => {
         console.error(err);
         this.toastr.error('Error al enviar OTP: ' + (err.error ? err.error : err.message));
       }
     });
+    
+    
     
     
   }

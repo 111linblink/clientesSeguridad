@@ -1,34 +1,139 @@
-<div class="container">
-    <h1>Crear Cliente</h1>
-    <div class="form-card">
-      <form (ngSubmit)="onSubmit()" class="form-layout">
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" />
-        </div>
-  
-        <div class="form-group">
-          <label for="apellido">Apellido</label>
-          <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" />
-        </div>
-  
-        <div class="form-group">
-          <label for="correo">Correo Electrónico</label>
-          <input type="email" id="correo" name="correoElectronico" [(ngModel)]="correoElectronico" />
-        </div>
-  
-        <div class="form-group">
-          <label for="direccion">Dirección</label>
-          <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion"/>
-        </div>
-  
-        <div class="form-group">
-          <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" name="telefono" [(ngModel)]="telefono"/>
-        </div>
-  
-        <button type="submit">Guardar Cliente</button>
-      </form>
+<div class="form-container pastel-form">
+  <h1>Crear Cliente</h1>
+  <form (ngSubmit)="onSubmit(formulario)" #formulario="ngForm" class="form">
+    
+    <!-- Validación del Nombre -->
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="nombre"
+        #nombreCtrl="ngModel"
+        required
+        class="form-control"
+        [class.invalid]="nombreCtrl.invalid && nombreCtrl.touched"
+      />
+      <div class="error" *ngIf="nombreCtrl.invalid && nombreCtrl.touched">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <!-- Validación del Apellido -->
+    <div class="form-group">
+      <label for="apellido">Apellido</label>
+      <input
+        type="text"
+        id="apellido"
+        name="apellido"
+        [(ngModel)]="apellido"
+        #apellidoCtrl="ngModel"
+        required
+        class="form-control"
+        [class.invalid]="apellidoCtrl.invalid && apellidoCtrl.touched"
+      />
+      <div class="error" *ngIf="apellidoCtrl.invalid && apellidoCtrl.touched">
+        El apellido es obligatorio.
+      </div>
+    </div>
+
+    <!-- Validación del Correo Electrónico -->
+    <div class="form-group">
+      <label for="correo">Correo Electrónico</label>
+      <input
+        type="email"
+        id="correo"
+        name="correoElectronico"
+        [(ngModel)]="correoElectronico"
+        #correoCtrl="ngModel"
+        required
+        email
+        class="form-control"
+        [class.invalid]="correoCtrl.invalid && correoCtrl.touched"
+      />
+      <div class="error" *ngIf="correoCtrl.errors?.['required'] && correoCtrl.touched">
+        El correo es obligatorio.
+      </div>
+      <div class="error" *ngIf="correoCtrl.errors?.['email'] && correoCtrl.touched">
+        El correo no tiene un formato válido.
+      </div>
+    </div>
+
+    <!-- Validación de la Dirección -->
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        [(ngModel)]="direccion"
+        #direccionCtrl="ngModel"
+        required
+        class="form-control"
+        [class.invalid]="direccionCtrl.invalid && direccionCtrl.touched"
+      />
+      <div class="error" *ngIf="direccionCtrl.invalid && direccionCtrl.touched">
+        La dirección es obligatoria.
+      </div>
+    </div>
+
+    <!-- Validación del Teléfono -->
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input
+        type="tel"
+        id="telefono"
+        name="telefono"
+        [(ngModel)]="telefono"
+        #telefonoCtrl="ngModel"
+        required
+        pattern="[0-9]{7,15}"
+        class="form-control"
+        [class.invalid]="telefonoCtrl.invalid && telefonoCtrl.touched"
+      />
+      <div class="error" *ngIf="telefonoCtrl.errors?.['required'] && telefonoCtrl.touched">
+        El teléfono es obligatorio.
+      </div>
+      <div class="error" *ngIf="telefonoCtrl.errors?.['pattern'] && telefonoCtrl.touched">
+        El teléfono debe tener entre 7 y 15 dígitos.
+      </div>
+    </div>
+
+    <!-- Acción del Botón -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="formulario.invalid">Guardar Cliente</button>
+    </div>
+  </form>
+
+  <!-- Mostrar los datos del cliente creado -->
+  <div *ngIf="clienteCreado" class="cliente-creado">
+    <h2>Cliente Creado</h2>
+    <p><strong>Nombre:</strong> {{ clienteCreado.nombre }}</p>
+    <p><strong>Apellido:</strong> {{ clienteCreado.apellido }}</p>
+    <p><strong>Correo:</strong> {{ clienteCreado.correoElectronico }}</p>
+    <p><strong>Teléfono:</strong> {{ clienteCreado.telefono }}</p>
+    <p><strong>Dirección:</strong> {{ clienteCreado.direccion }}</p>
+  </div>
+
+  <!-- MODAL DE CLIENTE CREADO -->
+  <div *ngIf="modalVisible" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Cliente Creado Correctamente</h2>
+      <p><strong>Nombre:</strong> {{ clienteCreado?.nombre }}</p>
+      <p><strong>Apellido:</strong> {{ clienteCreado?.apellido }}</p>
+      <p><strong>Correo:</strong> {{ clienteCreado?.correoElectronico }}</p>
+      <p><strong>Teléfono:</strong> {{ clienteCreado?.telefono }}</p>
+      <p><strong>Dirección:</strong> {{ clienteCreado?.direccion }}</p>
+      <button (click)="modalVisible = false">Cerrar</button>
     </div>
   </div>
-  
+
+  <!-- MODAL DE ERROR -->
+  <div *ngIf="modalErrorVisible" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Ingresa Correctamente tus datos</h2>
+      <button (click)="modalErrorVisible = false">Cerrar</button>
+    </div>
+  </div>
+</div>

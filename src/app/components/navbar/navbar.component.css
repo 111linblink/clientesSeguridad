@@ -1,0 +1,93 @@
+/* NAVBAR SUPERIOR */
+.top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente */
+    padding: 1rem 2rem;
+    background-color: #fff3f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo en la izquierda */
+.navbar-left h1 {
+    font-size: 1.6rem;
+    color: rgb(95, 95, 95); /* Blanco para el texto del logo */
+}
+
+/* MENÚ DE NAVEGACIÓN dentro del navbar */
+.navbar-menu {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-grow: 1; /* Para que ocupe el espacio restante */
+    padding: 0.5rem 0;
+    background-color: var(--primary-pink); /* Fondo rosado */
+}
+
+.nav-link {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.678); /* Color blanco para los enlaces */
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    align-items: center;
+    border-radius: 5px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+/* Efecto hover */
+.nav-link:hover {
+    color: rgb(0, 0, 0);
+    background-color: #fdd6ea; /* Color rosado más fuerte al pasar el mouse */
+}
+
+/* Enlace activo */
+.nav-link.active {
+    color: rgb(255, 214, 241);
+    background-color: #fdd6ea; /* Mismo color al ser activo */
+    font-weight: bold;
+}
+
+/* Sección de notificaciones y perfil del usuario */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.notification-btn {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #FF0000;
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+}
+
+.user-profile img {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.user-profile span {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    color: inherit;
+}

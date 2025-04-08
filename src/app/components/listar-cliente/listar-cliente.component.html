@@ -163,7 +163,6 @@
         <strong>Estado:</strong>
         {{ clienteSeleccionado.estado ? "Activo" : "Inactivo" }}
       </p>
-
       <button (click)="cerrarModal()">Cerrar</button>
     </div>
   </div>
@@ -186,4 +185,15 @@
       </button>
     </div>
   </div>
+
+    <!-- MODAL PARA VER LOS DATOS COMPLETOS DEL USUARIO -->
+    <div *ngIf="modalEliminacion" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Eliminación Correcta</h2>
+        <p>
+          Se ha eliminado correctamente al cliente
+          </p>
+        <button (click)="modalEliminacion = false">Cerrar</button>
+      </div>
+    </div>
 </div>

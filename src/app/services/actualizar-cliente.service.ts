@@ -28,4 +28,10 @@ export class ActualizarClienteService {
       actualizar
     );
   }
+
+  obtenerClientePorCorreo(correoElectronico: string): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}API/v1/Clientes/clienteController/buscarClientePorCorreo/${correoElectronico}`
+    );
+  }  
 }

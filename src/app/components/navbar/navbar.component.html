@@ -1,0 +1,46 @@
+<!-- NAVBAR SUPERIOR -->
+<nav class="top-navbar">
+    <div class="navbar-left">
+        <a href="/" class="navbar-brand">
+            <h1>Manejo de Clientes</h1>
+        </a>
+    </div>
+    
+    <!-- MENÚ DE NAVEGACIÓN dentro del navbar superior -->
+    <div class="navbar-menu">
+        <a href="/crearCliente" class="nav-link" id="create-link">Crear Cliente</a>
+        <a href="/listarClientes" class="nav-link" id="list-link">Listar Clientes</a>
+        <a href="/actualizarCliente" class="nav-link" id="update-link">Actualizar Cliente</a>
+    </div>
+
+    <div class="navbar-right">
+        <button class="notification-btn">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+        </button>
+        
+        <div class="user-profile">
+            <img src="" alt="Usuario">
+            <span>Hola</span>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Obtiene la ruta actual de la página
+    const currentPath = window.location.pathname;
+
+    // Define los enlaces de la barra de navegación
+    const createLink = document.getElementById('create-link');
+    const listLink = document.getElementById('list-link');
+    const updateLink = document.getElementById('update-link');
+
+    // Agrega la clase 'active' al enlace correspondiente según la página actual
+    if (currentPath.includes('crearCliente')) {
+        createLink.classList.add('active');
+    } else if (currentPath.includes('listarClientes')) {
+        listLink.classList.add('active');
+    } else if (currentPath.includes('actualizarCliente')) {
+        updateLink.classList.add('active');
+    }
+</script>

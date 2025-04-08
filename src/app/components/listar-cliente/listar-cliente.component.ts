@@ -28,6 +28,7 @@
     clienteSeleccionado: any = null;
     modalVisible: boolean = false;
     clienteAEliminar: any = null;
+    modalEliminacion: boolean = false;
 
     constructor(
       private listarService: ListarClientesService,
@@ -135,7 +136,7 @@
 
           this.listarService.eliminarCliente(request).subscribe({
             next: () => {
-              alert(`Cliente ${this.clienteAEliminar.nombre} eliminado correctamente`);
+              this.modalEliminacion = true; // Muestra el modal
               this.clienteAEliminar = null;
               this.onFilter(); // Recargar la lista
             },

@@ -107,3 +107,13 @@ button {
   margin-top: 1rem;
 }
 
+.error {
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.invalid {
+  border: 1px solid #d9534f;
+  background-color: #f9d6d5;
+}

@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './crear-cliente.component.html',
   styleUrl: './crear-cliente.component.css'
 })
-
 export class CrearClienteComponent {
   nombre = '';
   apellido = '';
@@ -19,16 +18,23 @@ export class CrearClienteComponent {
   telefono = '';
   firma = '';
 
-  clienteCreado: Cliente | null = null; // Guarda el cliente creado
-  modalVisible: boolean = false;    
+  clienteCreado: Cliente | null = null;
+  modalVisible: boolean = false;
+  modalErrorVisible: boolean = false;
 
   constructor(
     private crearClienteService: CrearClienteService,
     private firmaService: FirmaService
-
   ) {}
 
-  onSubmit() {
+  onSubmit(formulario: any) {
+    // Verificar si el formulario es válido
+    if (formulario.invalid) {
+      this.modalErrorVisible = true;  // Mostrar el modal de error si el formulario no es válido
+      this.showErrorMessages(formulario);  // Mostrar mensajes de error
+      return;
+    }
+
     const nuevoCliente: Cliente = {
       nombre: this.nombre,
       apellido: this.apellido,
@@ -37,7 +43,7 @@ export class CrearClienteComponent {
       direccion: this.direccion,
       firma: this.firma,
     };
-  
+
     const nuevoClienteFirma: ClienteFirma = {
       nombre: this.nombre,
       newName: '',
@@ -48,17 +54,17 @@ export class CrearClienteComponent {
       direccion: this.direccion,
       estado: null,
     };
-  
+
     this.firmaService.generarFirmaCrearCliente(nuevoClienteFirma).subscribe(
       (firmaGenerada) => {
         nuevoCliente.firma = firmaGenerada.firma;
-  
+
         this.crearClienteService.crearCliente(nuevoCliente).subscribe(
           (response) => {
-            this.clienteCreado = response; // Guarda el cliente para mostrar
-            this.modalVisible = true; // Muestra el modal
-            
-            // Limpia el formulario
+            this.clienteCreado = response;
+            this.modalVisible = true;
+
+            // Limpiar el formulario
             this.nombre = '';
             this.apellido = '';
             this.correoElectronico = '';
@@ -76,6 +82,31 @@ export class CrearClienteComponent {
         alert('Error al generar firma');
       }
     );
-  }  
-}
+  }
 
+  showErrorMessages(formulario: any) {
+    if (formulario.controls.nombre?.invalid) {
+      alert('El nombre es obligatorio');
+    } 
+    if (formulario.controls.apellido?.invalid) {
+      alert('El apellido es obligatorio');
+    }
+    if (formulario.controls.correoElectronico?.invalid) {
+      if (formulario.controls.correoElectronico?.errors?.['required']) {
+        alert('El correo es obligatorio');
+      } else if (formulario.controls.correoElectronico?.errors?.['email']) {
+        alert('El correo no tiene un formato válido');
+      }
+    }
+    if (formulario.controls.direccion?.invalid) {
+      alert('La dirección es obligatoria');
+    }
+    if (formulario.controls.telefono?.invalid) {
+      if (formulario.controls.telefono?.errors?.['required']) {
+        alert('El teléfono es obligatorio');
+      } else if (formulario.controls.telefono?.errors?.['pattern']) {
+        alert('El teléfono debe tener entre 7 y 15 dígitos');
+      }
+    }
+  }
+}

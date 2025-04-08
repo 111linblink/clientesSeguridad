@@ -9,6 +9,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
 import { SeleccionarCanalComponent } from './components/seleccionar-canal/seleccionar-canal.component';
+import { ValidarTokenComponent } from './components/validar-token/validar-token.component';
+import { RestablecerContrasenaComponent } from './components/restablecer-contrasena/restablecer-contrasena.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -18,9 +21,11 @@ export const routes: Routes = [
   {path:'navbar', component: NavbarComponent},
   { path:'registro', component:RegisterComponent},
   { path:'login', component:LoginComponent},
-  { path:'recuperar-contrasena', component:RecuperarContrasenaComponent},
-  { path:'verificar-otp', component:OtpVerificationComponent},
-  { path:'seleccionar-canal', component:SeleccionarCanalComponent}
+  { path:'recuperar-contrasena', component:ResetPasswordComponent},
+  { path:'verificar', component:OtpVerificationComponent},
+  { path:'seleccionar-canal', component:SeleccionarCanalComponent},
+  { path:'validar-token', component:ValidarTokenComponent},
+  { path:'restablecer-contrasena',component:RestablecerContrasenaComponent}
 ];
 
 ;

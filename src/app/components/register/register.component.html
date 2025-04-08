@@ -44,7 +44,8 @@
               #password="ngModel"
               placeholder="********"
               [pattern]="passwordPattern">
-              <div *ngIf="password.invalid && password.touched">
+              <div *ngIf="password.invalid && password.touched" class="error-message">
+                <small>La contraseña es obligatoria.</small>
                 <small class="text-danger" *ngIf="password.errors?.['pattern'] " class="error-message">
                   La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial.
                 </small>

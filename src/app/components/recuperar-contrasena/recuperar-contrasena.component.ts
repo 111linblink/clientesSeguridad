@@ -22,18 +22,15 @@ export class RecuperarContrasenaComponent {
         return;
     }
 
-    this.authService.recuperarContrasena(this.usuarioRequest).subscribe(
-        (response) => {
-            if (response.codigo === 0) {
-                this.mensaje = 'Se ha enviado un enlace para recuperar tu contraseña a tu correo.';
-            } else {
-                this.mensaje = response.mensaje;
-            }
+    this.authService.recuperarContrasena(this.usuarioRequest.email).subscribe(
+        response => {
+          console.log('Correo de recuperación enviado', response);
         },
-        (error) => {
-            this.mensaje = 'Hubo un error al intentar recuperar la contraseña.';
+        error => {
+          console.error('Error al enviar correo de recuperación', error);
         }
-    );
+      );
+      
 }
 
 

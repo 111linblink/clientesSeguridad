@@ -1,0 +1,11 @@
+<div class="container">
+    <h2>Validar Token</h2>
+    <form (ngSubmit)="onValidar()">
+      <div class="form-group">
+        <label for="token">Token de Recuperación</label>
+        <input type="text" id="token" [(ngModel)]="token" name="token" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Validar Token</button>
+    </form>
+  </div>
+  

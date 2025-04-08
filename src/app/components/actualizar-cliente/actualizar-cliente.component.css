@@ -1,81 +1,115 @@
-.container {
-    padding: 40px;
-    text-align: center;
-    font-family: Arial, sans-serif;
+.pastel-actualizar {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fef7ff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(123, 89, 255, 0.15);
+  font-family: 'Poppins', sans-serif;
+}
+
+.pastel-actualizar h1 {
+  text-align: center;
+  color: #7259aa;
+  margin-bottom: 25px;
+  font-size: 2.2rem;
+}
+
+/* Card del formulario */
+.form-card {
+  background-color: #fff0f8;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(218, 164, 202, 0.25);
+  margin-bottom: 2rem;
+  display: grid;
+  gap: 20px;
+}
+
+/* Layout del formulario */
+.pastel-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Grupo de inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #575883;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px;
+  border: 1px solid #c5b8e3;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #a98df0;
+  outline: none;
+  background-color: #f3f0ff;
+}
+
+/* Botón de acción */
+.form-actions {
+  grid-column: span 3;
+  text-align: center;
+  margin-top: 10px;
+}
+
+button {
+  padding: 12px 30px;
+  background-color: #d19cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 250px;
+}
+
+button:hover {
+  background-color: #b87ef7;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-actions {
+    grid-column: span 1;
   }
-  
-  h1 {
-    margin-bottom: 30px;
-    font-size: 2em;
-    font-weight: bold;
-  }
-  
-  /* Tarjeta del formulario */
-  .form-card {
-    max-width: 100%;
-    margin: 0 auto;
+
+  .pastel-actualizar {
     padding: 20px;
-    background: rgba(87, 87, 87, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
   }
-  .form-layout {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
-    gap: 15px;
-    align-items: center;
-    max-width: 100%; /* Asegura que no se desborde fuera del contenedor */
-  }
-  
-  .full-width {
-    grid-column: span 3; /* El botón ocupa las 3 columnas completas */
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .full-width {
-    grid-column: span 2; /* El botón ocupa toda la fila */
-  }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input,
-  select {
-    max-width: 100%; /* Garantiza que los inputs no se desborden */
-    width: auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border 0.3s ease;
-  }
-  
-  input:focus,
-  select:focus {
-    border-color: #5b5b5b;
-  }
-  /* Estilo del botón */
-  button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #282727;
-    border: none;
-    width: 100%;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  button:hover {
-    background-color: #5b5b5b;
-    transform: scale(1.05);
-  }
+}
+
+.modal-content {
+  background: #fff0f5;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+button {
+  margin-top: 1rem;
+}
+

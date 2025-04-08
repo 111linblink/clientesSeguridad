@@ -1,55 +1,59 @@
-<div class="dashboard-container">
-    <header class="dashboard-header">
-        <h1 class="dashboard-title">Gestión de Clientes</h1>
-        <p class="dashboard-subtitle">Administra los clientes</p>
-        <div class="header-decoration">
-            <div class="decoration-circle pink"></div>
-            <div class="decoration-circle light-pink"></div>
-            <div class="decoration-circle hot-pink"></div>
-        </div>
-    </header>
-    
-    <div class="card-grid">
-        <div class="action-card create-card">
-            <div class="card-icon">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Jiw5zq9n40Yf4hOLO7m3c3DKHsUeLuV17Q&s" alt="Crear cliente" class="card-image">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <header class="dashboard-header">
+                <h1 class="dashboard-title">Gestión de Clientes</h1>
+                <p class="dashboard-subtitle">Administra los clientes de tu empresa</p>
+            </header>
+            
+            <div class="card-grid">
+                <div class="action-card create-card">
+                    <div class="card-icon">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Jiw5zq9n40Yf4hOLO7m3c3DKHsUeLuV17Q&s" alt="Crear cliente" class="card-image">
+                    </div>
+                    <h2 class="card-title">Crear Cliente</h2>
+                    <p class="card-description">Registra nuevos clientes en el sistema</p>
+                    <a href="/crearCliente" class="card-button">
+                        <span>Ir a crear cliente</span>
+                        <i class="fas fa-arrow-right button-icon"></i>
+                    </a>
+                </div>
+                
+                <div class="action-card list-card">
+                    <div class="card-icon">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZE5mhlyJqK2R74RybuS6LHuMWGou_7uMjeA&s" alt="Listar clientes" class="card-image">
+                    </div>
+                    <h2 class="card-title">Listar Clientes</h2>
+                    <p class="card-description">Visualiza todos los clientes registrados</p>
+                    <a href="/listarClientes" class="card-button">
+                        <span>Ir a listar clientes</span>
+                        <i class="fas fa-arrow-right button-icon"></i>
+                    </a>
+                </div>
+                
+                <div class="action-card update-card">
+                    <div class="card-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/10336/10336382.png" alt="Actualizar clientes" class="card-image">
+                    </div>
+                    <h2 class="card-title">Actualizar Clientes</h2>
+                    <p class="card-description">Modifica información de clientes existentes</p>
+                    <a href="/actualizarCliente" class="card-button">
+                        <span>Ir a actualizar clientes</span>
+                        <i class="fas fa-arrow-right button-icon"></i>
+                    </a>
+                </div>
             </div>
-            <h2 class="card-title">Crear Cliente</h2>
-            <p class="card-description">Registra nuevos clientes en el sistema</p>
-            <button class="card-button" routerLink="/crearCliente">
-                <span>Ir a crear cliente</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/271/271226.png" alt="Flecha" class="button-icon">
-            </button>
-        </div>
-        
-        <div class="action-card list-card">
-            <div class="card-icon">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZE5mhlyJqK2R74RybuS6LHuMWGou_7uMjeA&s" alt="Listar clientes" class="card-image">
-            </div>
-            <h2 class="card-title">Listar Clientes</h2>
-            <p class="card-description">Visualiza todos los clientes registrados</p>
-            <button class="card-button" routerLink="/listarClientes">
-                <span>Ir a listar clientes</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/271/271226.png" alt="Flecha" class="button-icon">
-            </button>
-        </div>
-        
-        <div class="action-card update-card">
-            <div class="card-icon">
-                <img src="https://cdn-icons-png.flaticon.com/512/10336/10336382.png" alt="Actualizar clientes" class="card-image">
-            </div>
-            <h2 class="card-title">Actualizar Clientes</h2>
-            <p class="card-description">Modifica información de clientes existentes</p>
-            <button class="card-button" routerLink="/actualizarCliente">
-                <span>Ir a actualizar clientes</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/271/271226.png" alt="Flecha" class="button-icon">
-            </button>
         </div>
     </div>
-    
-    <div class="background-elements">
-        <div class="bg-circle large pink"></div>
-        <div class="bg-circle medium hot-pink"></div>
-        <div class="bg-circle small light-pink"></div>
-    </div>
-</div>
+</body>
+</html>

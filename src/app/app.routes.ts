@@ -8,11 +8,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
 import { SeleccionarCanalComponent } from './components/seleccionar-canal/seleccionar-canal.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'crearCliente', component: CrearClienteComponent },
   {path: 'listarClientes', component:ListarClientesComponent},
+  { path: 'actualizarCliente', component: ActualizarClienteComponent },
+  {path:'navbar', component: NavbarComponent},
   { path: 'actualizarCliente', component: ActualizarClienteComponent },
   { path:'registro', component:RegisterComponent},
   { path:'login', component:LoginComponent},

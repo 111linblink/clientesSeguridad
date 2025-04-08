@@ -6,6 +6,11 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,ToastrModule],
+import { NavbarComponent } from "./components/navbar/navbar.component";
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

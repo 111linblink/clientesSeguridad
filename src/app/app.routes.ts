@@ -23,4 +23,4 @@ export const routes: Routes = [
   { path:'seleccionar-canal', component:SeleccionarCanalComponent}
 ];
 
-];
+;

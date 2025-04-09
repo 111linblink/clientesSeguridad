@@ -58,6 +58,27 @@
             </div>
           </div>
 
+          <!-- Nuevo nombre -->
+          <div class="form-group">
+            <label for="newName">Nuevo nombre</label>
+            <div class="input-icon">
+              <input
+                type="text"
+                id="newName"
+                name="newName"
+                [(ngModel)]="newName"
+                class="form-control"
+                required
+                #newNameInput="ngModel" 
+              />
+              <i class="fas fa-user"></i> 
+            </div>
+            <div *ngIf="newNameInput.invalid && newNameInput.touched" class="error">
+              <span *ngIf="newNameInput.errors?.['required']">El nombre es obligatorio.</span>
+            </div>
+          </div>
+
+
           <!-- Apellido -->
           <div class="form-group">
             <label for="apellido">
@@ -79,10 +100,10 @@
               <span *ngIf="apellidoInput.errors?.['required']">El apellido es obligatorio.</span>
             </div>
           </div>
-        </div>
+        
 
         <!-- Fila de dos columnas -->
-        <div class="form-grid">
+        
           <!-- Nuevo Correo Electrónico -->
           <div class="form-group">
             <label for="nuevoCorreoElectronico">
@@ -106,6 +127,8 @@
             </div>
           </div>
 
+        </div>
+          <div class="form-grid">
           <!-- Teléfono -->
           <div class="form-group">
             <label for="telefono">
@@ -127,12 +150,9 @@
               <span *ngIf="telefonoInput.errors?.['required']">El teléfono es obligatorio.</span>
             </div>
           </div>
-        </div>
-
-        <!-- Fila de una columna para dirección y estado -->
-        <div class="form-grid">
-          <!-- Dirección -->
-          <div class="form-group full-width">
+        
+        
+          <div class="form-group ">
             <label for="direccion">
                Dirección
             </label>
@@ -152,7 +172,9 @@
               <span *ngIf="direccionInput.errors?.['required']">La dirección es obligatoria.</span>
             </div>
           </div>
+        </div>
 
+          <div class="form-grid">
           <!-- Estado -->
           <div class="form-group full-width">
             <label for="estatus">

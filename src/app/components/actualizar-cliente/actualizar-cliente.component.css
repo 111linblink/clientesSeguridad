@@ -1,115 +1,147 @@
-.pastel-actualizar {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #fef7ff;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(123, 89, 255, 0.15);
-  font-family: 'Poppins', sans-serif;
-}
-
-.pastel-actualizar h1 {
-  text-align: center;
-  color: #7259aa;
-  margin-bottom: 25px;
-  font-size: 2.2rem;
-}
-
-/* Card del formulario */
-.form-card {
-  background-color: #fff0f8;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 20px rgba(218, 164, 202, 0.25);
-  margin-bottom: 2rem;
-  display: grid;
-  gap: 20px;
-}
-
-/* Layout del formulario */
-.pastel-form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-/* Grupo de inputs */
-.form-group {
+.form-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f7f9fc;
 }
 
-.form-group label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #575883;
-}
-
-.form-group input,
-.form-group select {
-  padding: 12px;
-  border: 1px solid #c5b8e3;
+.form-content {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
   border-radius: 10px;
-  font-size: 14px;
-  background-color: #fff;
-  transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #a98df0;
-  outline: none;
-  background-color: #f3f0ff;
-}
-
-/* Botón de acción */
-.form-actions {
-  grid-column: span 3;
-  text-align: center;
-  margin-top: 10px;
-}
-
-button {
-  padding: 12px 30px;
-  background-color: #d19cff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 1200px;
   width: 100%;
-  max-width: 250px;
+  padding: 0px;
 }
 
-button:hover {
-  background-color: #b87ef7;
-  transform: translateY(-2px);
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 20px;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .form-actions {
-    grid-column: span 1;
-  }
+.card-icon i {
+  font-size: 150px;
+  color: #4E5D6D;
+}
 
-  .pastel-actualizar {
-    padding: 20px;
-  }
+.form-section {
+  flex: 2;
+  padding-left: 40px;
+}
+
+.form-section h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas */
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form-group.full-width {
+  grid-column: span 2; /* Cuando es de una sola columna */
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #4E5D6D;
+  margin-bottom: 8px;
+}
+
+label i {
+  margin-right: 10px;
+}
+
+.input-icon input,
+.input-icon select {
+  width: calc(100% - 20px); /* Reducir un poco el ancho para agregar margen */
+  padding: 12px;
+  padding-right: 2px; /* Espacio para el ícono */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.input-icon input.invalid,
+.input-icon select.invalid {
+  border-color: #f44336;
+}
+
+.input-icon i {
+  position: absolute;
+  top: 70%;
+  right: 30px; /* Ajustar a la misma distancia para todos */
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #aaa;
+}
+
+
+.error {
+  font-size: 12px;
+  color: #f44336;
+  margin-top: 5px;
+}
+
+.form-actions {
+  grid-column: span 2;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.btn-primary {
+  background-color: #1E40AF;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #3b82f6;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  background: #fff0f5;
-  border-radius: 1rem;
-  padding: 2rem;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  width: 400px;
 }
-
-button {
-  margin-top: 1rem;
-}
-

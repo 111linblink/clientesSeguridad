@@ -3,57 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Clientes</title>
+    <title>Gestión Profesional de Clientes</title>
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Dashboard Content -->
-        <div class="dashboard-container">
-            <header class="dashboard-header">
-                <h1 class="dashboard-title">Gestión de Clientes</h1>
-                <p class="dashboard-subtitle">Administra los clientes de tu empresa</p>
-            </header>
-            
-            <div class="card-grid">
-                <div class="action-card create-card">
-                    <div class="card-icon">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Jiw5zq9n40Yf4hOLO7m3c3DKHsUeLuV17Q&s" alt="Crear cliente" class="card-image">
-                    </div>
-                    <h2 class="card-title">Crear Cliente</h2>
-                    <p class="card-description">Registra nuevos clientes en el sistema</p>
-                    <a href="/crearCliente" class="card-button">
-                        <span>Ir a crear cliente</span>
-                        <i class="fas fa-arrow-right button-icon"></i>
-                    </a>
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Centro de Gestión de Clientes</h1>
+            <p class="dashboard-subtitle">Una plataforma robusta para optimizar tu relación con los clientes.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="action-card create-card">
+                <div class="card-icon">
+                    <i class="fas fa-user-plus"></i> <!-- Icono de agregar cliente -->
                 </div>
-                
-                <div class="action-card list-card">
-                    <div class="card-icon">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZE5mhlyJqK2R74RybuS6LHuMWGou_7uMjeA&s" alt="Listar clientes" class="card-image">
-                    </div>
-                    <h2 class="card-title">Listar Clientes</h2>
-                    <p class="card-description">Visualiza todos los clientes registrados</p>
-                    <a href="/listarClientes" class="card-button">
-                        <span>Ir a listar clientes</span>
-                        <i class="fas fa-arrow-right button-icon"></i>
-                    </a>
+                <h2 class="card-title"> Nuevo Cliente</h2>
+                <p class="card-description">Captura la información de nuevos clientes con un solo clic.</p>
+                <a href="/crearCliente" class="card-button">
+                   
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="action-card list-card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i> <!-- Icono de lista de clientes -->
                 </div>
-                
-                <div class="action-card update-card">
-                    <div class="card-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/10336/10336382.png" alt="Actualizar clientes" class="card-image">
-                    </div>
-                    <h2 class="card-title">Actualizar Clientes</h2>
-                    <p class="card-description">Modifica información de clientes existentes</p>
-                    <a href="/actualizarCliente" class="card-button">
-                        <span>Ir a actualizar clientes</span>
-                        <i class="fas fa-arrow-right button-icon"></i>
-                    </a>
+                <h2 class="card-title">Ver Todos los Clientes</h2>
+                <p class="card-description">Accede a una lista completa de los clientes registrados.</p>
+                <a href="/listarClientes" class="card-button">
+                    
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="action-card update-card">
+                <div class="card-icon">
+                    <i class="fas fa-user-edit"></i> <!-- Icono de editar cliente -->
                 </div>
+                <h2 class="card-title">Modificar Clientes</h2>
+                <p class="card-description">Actualiza y edita la información de los clientes en minutos.</p>
+                <a href="/actualizarCliente" class="card-button">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </div>
+    <!-- FontAwesome Script -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>

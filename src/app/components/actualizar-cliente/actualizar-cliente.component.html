@@ -1,67 +1,188 @@
-<div class="pastel-actualizar">
-  <h1>Actualizar cliente</h1>
-  <div class="form-card">
-    <form (ngSubmit)="onSubmit()" class="pastel-form-grid">
-      <div class="form-group">
-        <label for="correoElectronico">Correo del usuario a actualizar</label>
-        <input type="text" id="correoElectronico" name="correoElectronico" [(ngModel)]="correoElectronico" (ngModelChange)="onCorreoChange()"/>
+<div class="form-container">
+  <div class="form-content">
+    <!-- Lado izquierdo: Icono -->
+    <div class="icon-container">
+      <div class="card-icon">
+        <i class="fas fa-user-edit fa-4x"></i> <!-- Icono de editar cliente -->
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre"/>
-      </div>
+    <!-- Lado derecho: Formulario -->
+    <div class="form-section">
+      <h1>Actualizar Cliente</h1>
+      <form (ngSubmit)="onSubmit()" #formulario="ngForm" class="form">
+        
+        <!-- Correo Electrónico a Actualizar -->
+        <div class="form-group full-width">
+          <label for="correoElectronico">
+            <i class="fas fa-envelope"></i> Correo del usuario a actualizar
+          </label>
+          <div class="input-icon">
+          <input
+            type="text"
+            id="correoElectronico"
+            name="correoElectronico"
+            [(ngModel)]="correoElectronico"
+            (ngModelChange)="onCorreoChange()"
+            class="form-control"
+            required
+            #correoElectronicoInput="ngModel"
+          />
+          </div>
+          <div *ngIf="correoElectronicoInput.invalid && correoElectronicoInput.touched" class="error">
+            <span *ngIf="correoElectronicoInput.errors?.['required']">El correo es obligatorio.</span>
+          </div>
+        </div>
 
-      <div class="form-group">
-        <label for="newName">Nuevo nombre</label>
-        <input type="text" id="newName" name="newName" [(ngModel)]="newName"/>
-      </div>
+        <!-- Fila de dos columnas -->
+        <div class="form-grid">
+          <!-- Nombre -->
+          <div class="form-group">
+            <label for="nombre">
+              Nombre
+            </label>
+            <div class="input-icon">
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              [(ngModel)]="nombre"
+              class="form-control"
+              required
+              #nombreInput="ngModel"
+            />
+            <i class="fas fa-user"></i> 
+            </div>
+            <div *ngIf="nombreInput.invalid && nombreInput.touched" class="error">
+              <span *ngIf="nombreInput.errors?.['required']">El nombre es obligatorio.</span>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" />
-      </div>
+          <!-- Apellido -->
+          <div class="form-group">
+            <label for="apellido">
+              Apellido
+            </label>
+            <div class="input-icon">
+            <input
+              type="text"
+              id="apellido"
+              name="apellido"
+              [(ngModel)]="apellido"
+              class="form-control"
+              required
+              #apellidoInput="ngModel"
+            />
+            <i class="fas fa-user-tag"></i> 
+          </div>
+            <div *ngIf="apellidoInput.invalid && apellidoInput.touched" class="error">
+              <span *ngIf="apellidoInput.errors?.['required']">El apellido es obligatorio.</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="form-group">
-        <label for="nuevoCorreoElectronico">Nuevo correo electrónico</label>
-        <input type="email" id="nuevoCorreoElectronico" name="nuevoCorreoElectronico" [(ngModel)]="nuevoCorreoElectronico" />
-      </div>
+        <!-- Fila de dos columnas -->
+        <div class="form-grid">
+          <!-- Nuevo Correo Electrónico -->
+          <div class="form-group">
+            <label for="nuevoCorreoElectronico">
+               Nuevo correo electrónico
+            </label>
+            <div class="input-icon">
+            <input
+              type="email"
+              id="nuevoCorreoElectronico"
+              name="nuevoCorreoElectronico"
+              [(ngModel)]="nuevoCorreoElectronico"
+              class="form-control"
+              required
+              #nuevoCorreoElectronicoInput="ngModel"
+            />
+            <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <div *ngIf="nuevoCorreoElectronicoInput.invalid && nuevoCorreoElectronicoInput.touched" class="error">
+              <span *ngIf="nuevoCorreoElectronicoInput.errors?.['required']">El nuevo correo es obligatorio.</span>
+              <span *ngIf="nuevoCorreoElectronicoInput.errors?.['email']">Formato de correo no válido.</span>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion" />
-      </div>
+          <!-- Teléfono -->
+          <div class="form-group">
+            <label for="telefono">
+               Teléfono
+            </label>
+            <div class="input-icon">
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              [(ngModel)]="telefono"
+              class="form-control"
+              required
+              #telefonoInput="ngModel"
+            />
+            <i class="fas fa-phone"></i>
+            </div>
+            <div *ngIf="telefonoInput.invalid && telefonoInput.touched" class="error">
+              <span *ngIf="telefonoInput.errors?.['required']">El teléfono es obligatorio.</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="form-group">
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" [(ngModel)]="telefono"/>
-      </div>
+        <!-- Fila de una columna para dirección y estado -->
+        <div class="form-grid">
+          <!-- Dirección -->
+          <div class="form-group full-width">
+            <label for="direccion">
+               Dirección
+            </label>
+            <div class="input-icon">
+            <input
+              type="text"
+              id="direccion"
+              name="direccion"
+              [(ngModel)]="direccion"
+              class="form-control"
+              required
+              #direccionInput="ngModel"
+            />
+            <i class="fas fa-home"></i>
+            </div>
+            <div *ngIf="direccionInput.invalid && direccionInput.touched" class="error">
+              <span *ngIf="direccionInput.errors?.['required']">La dirección es obligatoria.</span>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <label for="estatus">Estado</label>
-        <select id="estatus" name="estatus" [(ngModel)]="estado">
-          <option [value]="null"></option>
-          <option [value]="true">Activo</option>
-          <option [value]="false">Inactivo</option>
-        </select>
-      </div>
+          <!-- Estado -->
+          <div class="form-group full-width">
+            <label for="estatus">
+               Estado
+            </label>
+            <div class="input-icon">
+              <select
+                id="estatus"
+                name="estatus"
+                [(ngModel)]="estado"
+                class="form-control"
+                required
+                #estatusInput="ngModel"
+              >
+                <option [value]="null"></option>
+                <option [value]="true">Activo</option>
+                <option [value]="false">Inactivo</option>
+              </select>
+            </div>
+            <div *ngIf="estatusInput.invalid && estatusInput.touched" class="error">
+              <span *ngIf="estatusInput.errors?.['required']">El estado es obligatorio.</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="form-actions">
-        <button type="submit">Guardar Cliente</button>
-      </div>
-    </form>
-    
-    <!-- Modal personalizado -->
-    <div *ngIf="clienteActualizado" class="modal-overlay">
-      <div class="modal-card">
-        <h2>Cliente Actualizado Correctamente</h2>
-        <p><strong>Nombre:</strong> {{ clienteActualizado.newName }}</p>
-        <p><strong>Apellido:</strong> {{ clienteActualizado.apellido }}</p>
-        <p><strong>Correo Electrónico:</strong> {{ clienteActualizado.nuevoCorreoElectronico || clienteActualizado.correoElectronico }}</p>
-        <p><strong>Teléfono:</strong> {{ clienteActualizado.telefono }}</p>
-        <p><strong>Dirección:</strong> {{ clienteActualizado.direccion }}</p>
-        <p><strong>Estado:</strong> {{ clienteActualizado.estado ? 'Activo' : 'Inactivo' }}</p>
-      </div>
+        <!-- Acción del Botón -->
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" [disabled]="formulario.invalid">Guardar Cliente</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

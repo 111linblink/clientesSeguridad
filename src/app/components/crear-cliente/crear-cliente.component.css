@@ -1,83 +1,114 @@
-.pastel-form {
-  max-width: 700px;
-  margin: 40px auto;
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f7f9fc;
+}
+
+.form-content {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 800px; /* Ajuste del tamaño */
+  width: 90%;
   padding: 30px;
-  background: #fef7ff;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(123, 89, 255, 0.15);
-  font-family: 'Poppins', sans-serif;
-  transition: all 0.3s ease;
 }
 
-.pastel-form h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 2.2rem;
-  color: #7259aa;
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 20px;
 }
 
-.form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+.card-icon i {
+  font-size: 60px; /* Reducido el tamaño del icono */
+  color: #4E5D6D;
+}
+
+.form-section {
+  flex: 2;
+  padding-left: 40px;
+}
+
+.form-section h1 {
+  font-size: 28px; /* Reducido el tamaño del título */
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 15px; /* Reducido el margen */
+  position: relative;
 }
 
-.form-group label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #575883;
-}
-
-.form-group input {
+.input-icon input {
+  width: 100%;
   padding: 12px;
-  border: 1px solid #c5b8e3;
-  border-radius: 10px;
-  font-size: 14px;
-  background-color: #fff;
-  transition: all 0.3s ease;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px; /* Reducido el tamaño de la fuente */
+  color: #333;
+  background-color: #f9f9f9;
 }
 
-.form-group input:focus {
-  border-color: #a98df0;
-  outline: none;
-  background-color: #f3f0ff;
+.input-icon input.invalid {
+  border-color: #f44336;
+}
+
+.input-icon i {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 16px; /* Reducido el tamaño del icono */
+  color: #aaa;
+}
+
+.error {
+  font-size: 12px; /* Reducido el tamaño de la fuente de errores */
+  color: #f44336;
+  margin-top: 5px;
 }
 
 .form-actions {
-  grid-column: span 2;
   text-align: center;
+  margin-top: 15px; /* Reducido el margen superior */
 }
 
-button {
-  padding: 0.9rem 1.5rem;
-  background-color: #d19cff;
-  color: #fff;
+.btn-primary {
+  background-color: #1E40AF;
+  color: white;
+  padding: 12px 25px; /* Reducido el tamaño del botón */
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #3b82f6;
+}
+
+.btn-secondary {
+  background-color: #e2e8f0;
+  color: #333;
+  padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #b87ef7;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 600px) {
-  .form {
-    grid-template-columns: 1fr;
-  }
-
-  .form-actions {
-    grid-column: span 1;
-  }
+.btn-secondary:hover {
+  background-color: #ccd6e1;
 }
 
 .modal-overlay {
@@ -86,34 +117,31 @@ button:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 10;
+  align-items: center;
 }
 
 .modal-content {
-  background: #fff0f5;
-  border-radius: 1rem;
-  padding: 2rem;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  width: 400px;
 }
 
-button {
-  margin-top: 1rem;
+.modal-content h2 {
+  font-size: 20px; /* Reducido el tamaño del título */
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
 }
 
-.error {
-  color: #d9534f;
-  font-size: 0.9rem;
-  margin-top: 4px;
-}
-
-.invalid {
-  border: 1px solid #d9534f;
-  background-color: #f9d6d5;
+.cliente-creado {
+  padding: 15px;
+  background: #e7f5ff;
+  border-radius: 8px;
+  margin-top: 20px;
 }

@@ -1,23 +1,3 @@
-:root {
-    --primary-pink: #FF6B9E;
-    --hot-pink: #FF3D7F;
-    --light-pink: #FFB8D1;
-    --soft-pink: #FFE5EE;
-    --deep-pink: #E83A72;
-    --lavender: #D4A5E9;
-    --mint: #8CE0D0;
-    --peach: #FFBEA3;
-    --gold: #FFD700;
-    --text-color: #4A2A3A;
-    --card-bg: rgba(255, 255, 255, 0.97);
-    --light-bg: linear-gradient(135deg, #FFF0F9, #FFF9FC);
-    --shadow: 0 8px 32px rgba(255, 109, 158, 0.15);
-    --sidebar-bg: #3A1E2E;
-    --sidebar-active: #5D2C4A;
-    --sidebar-text: #FFFFFF;
-    --sidebar-hover: #4A253C;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -25,463 +5,150 @@
 }
 
 body {
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-color);
-    line-height: 1.7;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7fb;
+    color: #333;
     overflow-x: hidden;
-    display: flex;
-    min-height: 100vh;
-    background: var(--light-bg);
 }
 
-/* Main Content Styles */
+/* Main content layout */
 .main-content {
-    flex: 1;
-    transition: all 0.3s;
-}
-
-.user-actions {
+    width: 100%;
+    height: 100vh;
+    padding: 40px;
+    background: linear-gradient(135deg, #bbe3eb, #728381);
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.notification-btn {
-    background: none;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    color: var(--text-color);
-    font-size: 1.2rem;
-    transition: transform 0.3s;
-}
-
-.notification-btn:hover {
-    transform: scale(1.1);
-    color: var(--primary-pink);
-}
-
-.notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: var(--primary-pink);
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 0.7rem;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    font-weight: 600;
-    border: 2px solid white;
-}
-
-.user-profile {
-    display: flex;
     align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: all 0.3s;
-    padding: 0.3rem 0.6rem;
-    border-radius: 20px;
 }
 
-.user-profile:hover {
-    background: rgba(255, 184, 209, 0.2);
-}
-
-.user-profile img {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-pink);
-    transition: all 0.3s;
-}
-
-.user-profile:hover img {
-    transform: scale(1.05);
-}
-
-.user-profile span {
-    font-weight: 500;
-    color: var(--text-color);
-}
-
-/* Dashboard Container Styles */
-.dashboard-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-    position: relative;
-}
-
+/* Dashboard header */
 .dashboard-header {
+    width: 80%;
+    padding: 50px;
+    background: url('https://www.pexels.com/photo/blur-bright-business-businesswoman-3775483/') center/cover;
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.2);
     text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
+    color: #fff;
+    margin-top: 80px;
+    transform: translateY(-40px);
+    transition: transform 0.5s ease-in-out;
+}
+
+.dashboard-header:hover {
+    transform: translateY(0px);
 }
 
 .dashboard-title {
-    font-size: 2.8rem;
+    font-size: 50px;
     font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-    position: relative;
-    display: inline-block;
-}
-
-.dashboard-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(to right, var(--primary-pink), var(--lavender));
-    border-radius: 2px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
 
 .dashboard-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    opacity: 0.8;
+    font-size: 18px;
     font-weight: 400;
-    max-width: 600px;
-    margin: 1rem auto 0;
-    line-height: 1.6;
+    opacity: 0.9;
 }
 
-.header-decoration {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    z-index: -1;
-}
-
-
-/* Card Grid Styles */
+/* Card grid layout */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; /* Aumenté el espacio entre las tarjetas */
+    margin-top: 0px;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
 }
 
+/* Card styles */
 .action-card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border: 1px solid rgba(255, 184, 209, 0.3);
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-}
-
-.action-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, var(--primary-pink), var(--hot-pink));
-    transition: all 0.3s;
-}
-
-.action-card:hover::before {
-    height: 8px;
-}
-
-.create-card::before {
-    background: linear-gradient(90deg, var(--primary-pink), var(--lavender));
-}
-
-.list-card::before {
-    background: linear-gradient(90deg, var(--lavender), var(--primary-pink));
-}
-
-.update-card::before {
-    background: linear-gradient(90deg, var(--mint), var(--deep-pink));
+    text-align: center;
 }
 
 .action-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(255, 107, 158, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
-.card-icon {
-    width: 90px;
-    height: 90px;
+/* Icon styling (reemplazado con iconos de FontAwesome) */
+.card-icon i {
+    font-size: 60px;
+    color: #3b8d99;
+    background-color: #f7f7f7;
+    padding: 20px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.8rem;
-    color: rgb(0, 0, 0);
-    font-size: 2rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-.card-icon::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transform: rotate(45deg);
-    opacity: 0;
-    transition: all 0.5s;
-}
-
-.action-card:hover .card-icon::before {
-    opacity: 1;
-    animation: shine 1.5s infinite;
-}
-
-.create-card .card-icon {
-    background: linear-gradient(135deg, var(--primary-pink), var(--lavender));
-}
-
-.list-card .card-icon {
-    background: linear-gradient(135deg, var(--peach), var(--primary-pink));
-}
-
-.update-card .card-icon {
-    background: linear-gradient(135deg, var(--mint), var(--deep-pink));
-}
-
-.card-image {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    transition: transform 0.3s;
-}
-
-.action-card:hover .card-image {
-    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card-title {
-    font-size: 1.6rem;
+    font-size: 26px;
     font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.card-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background: currentColor;
-    opacity: 0.5;
-}
-
-.create-card .card-title {
-    color: var(--deep-pink);
-}
-
-.list-card .card-title {
-    color: var(--primary-pink);
-}
-
-.update-card .card-title {
-    color: var(--hot-pink);
+    color: #333;
+    margin: 10px 0;
 }
 
 .card-description {
-    color: var(--text-color);
-    margin-bottom: 2rem;
-    font-size: 1rem;
+    font-size: 16px;
+    font-weight: 300;
+    color: #777;
+    margin-bottom: 20px;
     opacity: 0.8;
-    flex-grow: 1;
-    max-width: 240px;
-    line-height: 1.6;
 }
 
+/* Button styling */
 .card-button {
+    background-color: #23a1f5;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0.9rem 1.8rem;
-    background: linear-gradient(45deg, var(--primary-pink), var(--hot-pink));
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 50px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    width: 100%;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(255, 107, 158, 0.3);
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-    z-index: 1;
-}
-
-.card-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, var(--hot-pink), var(--primary-pink));
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: -1;
-}
-
-.card-button:hover::before {
-    opacity: 1;
-}
-
-.create-card .card-button {
-    background: linear-gradient(45deg, var(--primary-pink), var(--lavender));
-}
-
-.list-card .card-button {
-    background: linear-gradient(45deg, var(--peach), var(--primary-pink));
-}
-
-.update-card .card-button {
-    background: linear-gradient(45deg, var(--mint), var(--deep-pink));
-}
-
-.card-button span {
-    position: relative;
-    z-index: 2;
-    margin-right: 0.75rem;
-}
-
-.button-icon {
     transition: all 0.3s ease;
-    width: 18px;
-    height: 18px;
-    margin-left: 8px;
 }
 
 .card-button:hover {
-    box-shadow: 0 10px 25px rgba(255, 107, 158, 0.4);
-    transform: translateY(-3px);
+    background-color: #3b82f6;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.card-button:hover .button-icon {
-    transform: translateX(5px);
+.card-button i {
+    margin-left: 12px;
 }
 
-/* Background Elements */
-.background-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.bg-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.15;
-    animation: float 12s ease-in-out infinite;
-}
-
-.bg-circle.large {
-    width: 500px;
-    height: 500px;
-    background: var(--primary-pink);
-    top: 20%;
-    left: 10%;
-}
-
-.bg-circle.medium {
-    width: 350px;
-    height: 350px;
-    background: var(--lavender);
-    bottom: 15%;
-    right: 10%;
-    animation-delay: 2s;
-}
-
-.bg-circle.small {
-    width: 250px;
-    height: 250px;
-    background: var(--mint);
-    top: 60%;
-    left: 30%;
-    animation-delay: 4s;
-}
-
-/* Animations */
-@keyframes float {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-    100% { transform: translateY(0) rotate(0deg); }
-}
-
-@keyframes shine {
-    0% { transform: rotate(45deg) translate(-30%, -30%); }
-    100% { transform: rotate(45deg) translate(30%, 30%); }
-}
-
-/* Responsive Styles */
-@media (max-width: 992px) {
-        .main-content {
-        margin-left: 240px;
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .card-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
-@media (max-width: 768px) {    
-    .main-content {
-        margin-left: 0;
-    }
-    
-    .dashboard-title {
-        font-size: 2.2rem;
-    }
-    
-    .dashboard-subtitle {
-        font-size: 1rem;
-    }
-    
+@media (max-width: 768px) {
     .card-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
-}
 
-@media (max-width: 576px) {
-    .action-card {
-        padding: 2rem 1.5rem;
+    .dashboard-header {
+        padding: 20px;
+        text-align: left;
+    }
+
+    .dashboard-title {
+        font-size: 30px;
     }
 }

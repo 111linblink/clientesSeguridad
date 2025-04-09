@@ -51,9 +51,10 @@ export class AuthService {
   }
 
   // Restablecer la contraseña
-  restablecerContrasena(token: string, nuevaContrasena: string): Observable<any> {
-    return this.http.post(`${this.resApiUrl}/restablecer-contrasena`, { token, nuevaContrasena });
-  }
+    restablecerContrasena(token: string, nuevaContrasena: string): Observable<any> {
+      return this.http.post(`${this.resApiUrl}/restablecer-contrasena`, { token, nuevaContrasena });
+    }
+  
   
   
   

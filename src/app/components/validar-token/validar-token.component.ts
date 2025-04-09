@@ -20,7 +20,7 @@ export class ValidarTokenComponent {
     this.authService.validarToken(this.token).subscribe(
       (response) => {
         alert('Token validado con éxito.');
-        this.router.navigate(['/restablecer-contrasena']);  // Redirigir a la página de restablecimiento
+        this.router.navigate(['/restablecer-contrasena'], { queryParams: { token: this.token } });
       },
       (error) => {
         alert('Token inválido.');

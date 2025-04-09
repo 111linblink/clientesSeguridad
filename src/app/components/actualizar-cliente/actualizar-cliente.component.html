@@ -205,6 +205,18 @@
           <button type="submit" class="btn-primary" [disabled]="formulario.invalid">Guardar Cliente</button>
         </div>
       </form>
+
+      <div *ngIf="clienteActualizado" class="modal-overlay">
+        <div class="modal-card">
+          <h2>Cliente Actualizado Correctamente</h2>
+          <p><strong>Nombre:</strong> {{ clienteActualizado.newName }}</p>
+          <p><strong>Apellido:</strong> {{ clienteActualizado.apellido }}</p>
+          <p><strong>Correo Electrónico:</strong> {{ clienteActualizado.nuevoCorreoElectronico || clienteActualizado.correoElectronico }}</p>
+          <p><strong>Teléfono:</strong> {{ clienteActualizado.telefono }}</p>
+          <p><strong>Dirección:</strong> {{ clienteActualizado.direccion }}</p>
+          <p><strong>Estado:</strong> {{ clienteActualizado.estado ? 'Activo' : 'Inactivo' }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

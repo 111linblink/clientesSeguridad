@@ -1,172 +1,93 @@
 <div class="form-container">
   <div class="form-content">
-    <!-- Lado izquierdo: Icono -->
     <div class="icon-container">
       <div class="card-icon">
-        <i class="fas fa-user-edit fa-4x"></i> <!-- Icono de editar cliente -->
+        <i class="fas fa-user-edit fa-4x"></i>
       </div>
     </div>
 
-    <!-- Lado derecho: Formulario -->
     <div class="form-section">
       <h1>Actualizar Cliente</h1>
       <form (ngSubmit)="onSubmit()" #formulario="ngForm" class="form">
-        
-        <!-- Correo Electrónico a Actualizar -->
         <div class="form-group full-width">
           <label for="correoElectronico">
             <i class="fas fa-envelope"></i> Correo del usuario a actualizar
           </label>
           <div class="input-icon">
-          <input
-            type="text"
-            id="correoElectronico"
-            name="correoElectronico"
-            [(ngModel)]="correoElectronico"
-            (ngModelChange)="onCorreoChange()"
-            class="form-control"
-            required
-            #correoElectronicoInput="ngModel"
-          />
+            <input
+              type="text"
+              id="correoElectronico"
+              name="correoElectronico"
+              [(ngModel)]="correoElectronico"
+              (ngModelChange)="onCorreoChange()"
+              class="form-control"
+              required
+              #correoElectronicoInput="ngModel"
+            />
           </div>
           <div *ngIf="correoElectronicoInput.invalid && correoElectronicoInput.touched" class="error">
             <span *ngIf="correoElectronicoInput.errors?.['required']">El correo es obligatorio.</span>
           </div>
         </div>
 
-        <!-- Fila de dos columnas -->
         <div class="form-grid">
-          <!-- Nombre -->
           <div class="form-group">
-            <label for="nombre">
-              Nombre
-            </label>
+            <label for="nombre">Nombre</label>
             <div class="input-icon">
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              [(ngModel)]="nombre"
-              class="form-control"
-              required
-              #nombreInput="ngModel"
-            />
-            <i class="fas fa-user"></i> 
+              <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" class="form-control" required #nombreInput="ngModel" />
             </div>
             <div *ngIf="nombreInput.invalid && nombreInput.touched" class="error">
               <span *ngIf="nombreInput.errors?.['required']">El nombre es obligatorio.</span>
             </div>
           </div>
 
-          <!-- Nuevo nombre -->
           <div class="form-group">
             <label for="newName">Nuevo nombre</label>
             <div class="input-icon">
-              <input
-                type="text"
-                id="newName"
-                name="newName"
-                [(ngModel)]="newName"
-                class="form-control"
-                required
-                #newNameInput="ngModel" 
-              />
-              <i class="fas fa-user"></i> 
+              <input type="text" id="newName" name="newName" [(ngModel)]="newName" class="form-control" required #newNameInput="ngModel" />
             </div>
             <div *ngIf="newNameInput.invalid && newNameInput.touched" class="error">
               <span *ngIf="newNameInput.errors?.['required']">El nombre es obligatorio.</span>
             </div>
           </div>
 
-
-          <!-- Apellido -->
           <div class="form-group">
-            <label for="apellido">
-              Apellido
-            </label>
+            <label for="apellido">Apellido</label>
             <div class="input-icon">
-            <input
-              type="text"
-              id="apellido"
-              name="apellido"
-              [(ngModel)]="apellido"
-              class="form-control"
-              required
-              #apellidoInput="ngModel"
-            />
-            <i class="fas fa-user-tag"></i> 
-          </div>
+              <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" class="form-control" required #apellidoInput="ngModel" />
+            </div>
             <div *ngIf="apellidoInput.invalid && apellidoInput.touched" class="error">
               <span *ngIf="apellidoInput.errors?.['required']">El apellido es obligatorio.</span>
             </div>
           </div>
-        
 
-        <!-- Fila de dos columnas -->
-        
-          <!-- Nuevo Correo Electrónico -->
           <div class="form-group">
-            <label for="nuevoCorreoElectronico">
-               Nuevo correo electrónico
-            </label>
+            <label for="nuevoCorreoElectronico">Nuevo correo electrónico</label>
             <div class="input-icon">
-            <input
-              type="email"
-              id="nuevoCorreoElectronico"
-              name="nuevoCorreoElectronico"
-              [(ngModel)]="nuevoCorreoElectronico"
-              class="form-control"
-              required
-              #nuevoCorreoElectronicoInput="ngModel"
-            />
-            <i class="fas fa-envelope-open-text"></i>
+              <input type="email" id="nuevoCorreoElectronico" name="nuevoCorreoElectronico" [(ngModel)]="nuevoCorreoElectronico" class="form-control" required #nuevoCorreoElectronicoInput="ngModel" />
             </div>
             <div *ngIf="nuevoCorreoElectronicoInput.invalid && nuevoCorreoElectronicoInput.touched" class="error">
               <span *ngIf="nuevoCorreoElectronicoInput.errors?.['required']">El nuevo correo es obligatorio.</span>
               <span *ngIf="nuevoCorreoElectronicoInput.errors?.['email']">Formato de correo no válido.</span>
             </div>
           </div>
-
         </div>
-          <div class="form-grid">
-          <!-- Teléfono -->
+
+        <div class="form-grid">
           <div class="form-group">
-            <label for="telefono">
-               Teléfono
-            </label>
+            <label for="telefono">Teléfono</label>
             <div class="input-icon">
-            <input
-              type="tel"
-              id="telefono"
-              name="telefono"
-              [(ngModel)]="telefono"
-              class="form-control"
-              required
-              #telefonoInput="ngModel"
-            />
-            <i class="fas fa-phone"></i>
+              <input type="tel" id="telefono" name="telefono" [(ngModel)]="telefono" class="form-control" required #telefonoInput="ngModel" />
             </div>
             <div *ngIf="telefonoInput.invalid && telefonoInput.touched" class="error">
               <span *ngIf="telefonoInput.errors?.['required']">El teléfono es obligatorio.</span>
             </div>
           </div>
-        
-        
-          <div class="form-group ">
-            <label for="direccion">
-               Dirección
-            </label>
+
+          <div class="form-group">
+            <label for="direccion">Dirección</label>
             <div class="input-icon">
-            <input
-              type="text"
-              id="direccion"
-              name="direccion"
-              [(ngModel)]="direccion"
-              class="form-control"
-              required
-              #direccionInput="ngModel"
-            />
-            <i class="fas fa-home"></i>
+              <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion" class="form-control" required #direccionInput="ngModel" />
             </div>
             <div *ngIf="direccionInput.invalid && direccionInput.touched" class="error">
               <span *ngIf="direccionInput.errors?.['required']">La dirección es obligatoria.</span>
@@ -174,48 +95,38 @@
           </div>
         </div>
 
-          <div class="form-grid">
-          <!-- Estado -->
+        <div class="form-grid">
           <div class="form-group full-width">
-            <label for="estatus">
-               Estado
-            </label>
-            <div class="input-icon">
-              <select
-                id="estatus"
-                name="estatus"
-                [(ngModel)]="estado"
-                class="form-control"
-                required
-                #estatusInput="ngModel"
-              >
-                <option [value]="null"></option>
-                <option [value]="true">Activo</option>
-                <option [value]="false">Inactivo</option>
-              </select>
-            </div>
-            <div *ngIf="estatusInput.invalid && estatusInput.touched" class="error">
-              <span *ngIf="estatusInput.errors?.['required']">El estado es obligatorio.</span>
+            <label for="estado">Estado</label>
+            <div class="checkbox-group">
+              <label class="checkbox">
+                <input type="checkbox" [(ngModel)]="estado" name="estado" />
+                <span class="checkmark"></span> Activo
+              </label>
             </div>
           </div>
         </div>
 
-        <!-- Acción del Botón -->
         <div class="form-actions">
-          <button type="submit" class="btn-primary" [disabled]="formulario.invalid">Guardar Cliente</button>
+          <button type="submit" [disabled]="formulario.invalid" class="btn-primary">Actualizar Cliente</button>
         </div>
       </form>
+    </div>
+  </div>
 
-      <div *ngIf="clienteActualizado" class="modal-overlay">
-        <div class="modal-card">
-          <h2>Cliente Actualizado Correctamente</h2>
-          <p><strong>Nombre:</strong> {{ clienteActualizado.newName }}</p>
-          <p><strong>Apellido:</strong> {{ clienteActualizado.apellido }}</p>
-          <p><strong>Correo Electrónico:</strong> {{ clienteActualizado.nuevoCorreoElectronico || clienteActualizado.correoElectronico }}</p>
-          <p><strong>Teléfono:</strong> {{ clienteActualizado.telefono }}</p>
-          <p><strong>Dirección:</strong> {{ clienteActualizado.direccion }}</p>
-          <p><strong>Estado:</strong> {{ clienteActualizado.estado ? 'Activo' : 'Inactivo' }}</p>
-        </div>
+  <!-- Modal -->
+  <div *ngIf="clienteActualizado" class="modal-overlay" [ngClass]="{'active': clienteActualizado}">
+    <div class="modal-card">
+      <h2>Cliente Actualizado Correctamente</h2>
+      <p><strong>Nombre:</strong> {{ clienteActualizado.newName }}</p>
+      <p><strong>Apellido:</strong> {{ clienteActualizado.apellido }}</p>
+      <p><strong>Correo Electrónico:</strong> {{ clienteActualizado.nuevoCorreoElectronico || clienteActualizado.correoElectronico }}</p>
+      <p><strong>Teléfono:</strong> {{ clienteActualizado.telefono }}</p>
+      <p><strong>Dirección:</strong> {{ clienteActualizado.direccion }}</p>
+      <p><strong>Estado:</strong> {{ clienteActualizado.estado ? 'Activo' : 'Inactivo' }}</p>
+      
+      <div class="modal-actions">
+        <button (click)="cerrarModal()" class="close-btn">Cerrar</button>
       </div>
     </div>
   </div>

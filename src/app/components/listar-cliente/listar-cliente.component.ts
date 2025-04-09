@@ -3,6 +3,7 @@
   import { FormsModule } from '@angular/forms';
   import { ListarClientesService, ListarClientesRequest, ClienteListResponse, EliminarClienteRequest } from '../../services/listar-cliente.service';
   import { FirmaService, CrearFirmaListarClientes, FirmaEliminarRequest, ClienteFirma } from '../../services/firma.service';
+import { ToastrService } from 'ngx-toastr';
 
   @Component({
     selector: 'app-listar-cliente',
@@ -32,7 +33,8 @@
 
     constructor(
       private listarService: ListarClientesService,
-      private firmaService: FirmaService
+      private firmaService: FirmaService,
+      private toastr: ToastrService
     ) {}
 
     // Formatear fecha para el backend
@@ -91,14 +93,14 @@
             error: (error) => {
               this.loading = false;
               console.error('Error al listar clientes:', error);
-              alert('Error al cargar clientes');
+              this.toastr.error('Error al cargar clientes');
             }
           });
         },
         error: (error) => {
           this.loading = false;
           console.error('Error al generar firma:', error);
-          alert('Error al generar firma');
+          this.toastr.error('Error al generar firma');
         }
       });
     }
@@ -142,13 +144,13 @@
             },
             error: (error) => {
               console.error('Error al eliminar cliente:', error);
-              alert('Error al eliminar cliente');
+              this.toastr.error('Error al eliminar cliente');
             }
           });
         },
         error: (error) => {
           console.error('Error al generar firma:', error);
-          alert('Error al generar firma para eliminación');
+          this.toastr.error('Error al generar firma para eliminación');
         }
       });
     }

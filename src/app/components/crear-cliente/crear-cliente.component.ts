@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Cliente, CrearClienteService } from '../../services/crear-cliente.service';
 import { ClienteFirma, FirmaService } from '../../services/firma.service';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -24,7 +25,8 @@ export class CrearClienteComponent {
 
   constructor(
     private crearClienteService: CrearClienteService,
-    private firmaService: FirmaService
+    private firmaService: FirmaService,
+     private toastr: ToastrService
   ) {}
 
   onSubmit(formulario: any) {
@@ -73,39 +75,39 @@ export class CrearClienteComponent {
           },
           (error) => {
             console.error('Error al crear el cliente:', error);
-            alert('Error al crear cliente');
+            this.toastr.error('Error al crear el cliente por.', error);
           }
         );
       },
       (error) => {
         console.error('Error al generar la firma:', error);
-        alert('Error al generar firma');
+        this.toastr.error('Error al generar firma');
       }
     );
   }
 
   showErrorMessages(formulario: any) {
     if (formulario.controls.nombre?.invalid) {
-      alert('El nombre es obligatorio');
+      this.toastr.error('El nombre es obligatorio');
     } 
     if (formulario.controls.apellido?.invalid) {
-      alert('El apellido es obligatorio');
+      this.toastr.error('El apellido es obligatorio');
     }
     if (formulario.controls.correoElectronico?.invalid) {
       if (formulario.controls.correoElectronico?.errors?.['required']) {
-        alert('El correo es obligatorio');
+        this.toastr.error('El correo es obligatorio');
       } else if (formulario.controls.correoElectronico?.errors?.['email']) {
-        alert('El correo no tiene un formato válido');
+        this.toastr.error('El correo no tiene un formato válido');
       }
     }
     if (formulario.controls.direccion?.invalid) {
-      alert('La dirección es obligatoria');
+      this.toastr.error('La dirección es obligatoria');
     }
     if (formulario.controls.telefono?.invalid) {
       if (formulario.controls.telefono?.errors?.['required']) {
-        alert('El teléfono es obligatorio');
+        this.toastr.error('El teléfono es obligatorio');
       } else if (formulario.controls.telefono?.errors?.['pattern']) {
-        alert('El teléfono debe tener entre 7 y 15 dígitos');
+        this.toastr.error('El teléfono debe tener 10 digitos');
       }
     }
   }

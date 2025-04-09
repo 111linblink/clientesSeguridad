@@ -1,144 +1,96 @@
-/* Estilos base (consistentes con los otros formularios) */
+/* Contenedor principal */
 .otp-container {
-    background: #ffffff;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 420px;
+    max-width: 400px;
+    margin: 50px auto;
     padding: 30px;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    margin: 20px auto;
-}
-
-.otp-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.otp-header {
-    text-align: center;
-    margin-bottom: 20px;
-    background-color: #6c5ce7;
-    color: white;
-    padding: 20px;
-    border-radius: 10px 10px 0 0;
-}
-
-.otp-header .logo {
-    width: 100px;
-    margin-bottom: 10px;
-}
-
-.otp-header h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.otp-form {
-    width: 100%;
-}
-
-/* Reutiliza los mismos estilos de los otros formularios para consistencia */
-.form-group {
-    margin-bottom: 25px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 14px;
-    font-size: 1rem;
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    outline: none;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.form-group input:focus {
-    border-color: #6c5ce7;
-    background-color: #fff;
-}
-
-.form-actions {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo del formulario */
+  .otp-form {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.submit-button {
-    background-color: #6c5ce7;
-    color: #fff;
+    flex-direction: column;
+  }
+  
+  /* Header del formulario */
+  .header-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Icono del header */
+  .header-group .icon {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  /* Título del formulario */
+  .header-group h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Grupo de campos */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Label */
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  /* Input */
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Acciones del formulario */
+  .form-actions {
+    text-align: center;
+  }
+  
+  /* Botón */
+  .btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
     border: none;
-    padding: 14px 30px;
-    font-size: 1rem;
-    border-radius: 10px;
+    color: #fff;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%;
-}
-
-.submit-button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-}
-
-.submit-button:hover:not(:disabled) {
-    background-color: #5a4ac7;
-}
-
-.error-message {
-    color: #e74c3c;
-    font-size: 0.875rem;
-    margin-top: 5px;
-}
-
-.success-message {
-    color: #2ecc71;
-    font-size: 0.875rem;
-    margin-top: 5px;
-    margin-bottom: 15px;
+  }
+  
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Mensajes de error */
+  .error-message {
+    color: #dc3545;
+    margin-bottom: 10px;
     text-align: center;
-}
-
-.resend-link {
+  }
+  
+  /* Mensajes de éxito */
+  .success-message {
+    color: #28a745;
+    margin-bottom: 10px;
     text-align: center;
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.resend-link a {
-    color: #6c5ce7;
-    text-decoration: none;
-}
-
-.resend-link a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-    .otp-container {
-        padding: 20px;
-    }
-
-    .otp-header h2 {
-        font-size: 1.6rem;
-    }
-
-    .form-group input {
-        font-size: 0.9rem;
-    }
-
-    .submit-button {
-        font-size: 0.9rem;
-    }
-}
+  }
+  

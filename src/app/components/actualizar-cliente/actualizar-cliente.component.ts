@@ -5,12 +5,13 @@ import { ActualizarCliente, ActualizarClienteService } from '../../services/actu
 import { ClienteFirma, FirmaService } from '../../services/firma.service';
 import { Subject } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-actualizar-cliente',
   imports: [CommonModule, FormsModule],
   templateUrl: './actualizar-cliente.component.html',
-  styleUrl: './actualizar-cliente.component.css',
+  styleUrls: ['./actualizar-cliente.component.css'],
 })
 export class ActualizarClienteComponent implements OnInit {
   nombre = '';
@@ -28,11 +29,11 @@ export class ActualizarClienteComponent implements OnInit {
   constructor(
     private firmaService: FirmaService,
     private actualizarClienteService: ActualizarClienteService,
-    private clienteService: ActualizarClienteService
+    private clienteService: ActualizarClienteService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
-    // Suscripción al subject con debounceTime
     this.correoSubject.pipe(
       debounceTime(500), // Espera 500ms después de que el usuario termine de escribir
       switchMap(correo => {
@@ -47,22 +48,20 @@ export class ActualizarClienteComponent implements OnInit {
           this.direccion = cliente.direccion;
           this.estado = cliente.estado;
         } else {
-          alert('Cliente no encontrado');
+          this.toastr.error('Cliente no encontrado');
         }
       },
       (error) => {
         console.error('Error al buscar cliente: ', error);
-        alert('Error al buscar cliente');
+        this.toastr.error('Error al buscar cliente');
       }
     );
   }
 
-  // Método para manejar el cambio de correo
   onCorreoChange() {
     this.correoSubject.next(this.correoElectronico); // Emitir el nuevo valor del correo
   }
 
-  // Método para enviar el formulario
   onSubmit() {
     const actualizarCli: ActualizarCliente = {
       nombre: this.nombre,
@@ -91,8 +90,8 @@ export class ActualizarClienteComponent implements OnInit {
       (firmaGenerada) => {
         actualizarCli.firma = firmaGenerada.firma;
 
-        alert('Formulario para actualizar el cliente');
-        alert('Formulario para firma del cliente');
+        //alert('Formulario para actualizar el cliente');
+        //alert('Formulario para firma del cliente');
 
         //Actualizar cliente
         this.actualizarClienteService
@@ -100,21 +99,20 @@ export class ActualizarClienteComponent implements OnInit {
           .subscribe(
             (response) => {
               console.log('Cliente actualizado:', response);
-              alert('Cliente actualizado con éxito');
+              this.toastr.success('Cliente actualizado con éxito');
               this.clienteActualizado = actualizarCli; // Guarda los datos del cliente actualizado
             },
             (error) => {
-              alert('Error al actualizar el cliente');
+              this.toastr.error('Error al actualizar el cliente');
             }
           );
       },
       (error) => {
-        alert('Error al generar la firma de actualización: ' + JSON.stringify(error, null, 2));
+        this.toastr.error('Error al generar la firma de actualización: ' + JSON.stringify(error, null, 2));
       }
     );
   }
 
-  // Cerrar el modal
   cerrarModal() {
     this.clienteActualizado = null; // Limpiar los datos del cliente actualizado cuando se cierra el modal
   }

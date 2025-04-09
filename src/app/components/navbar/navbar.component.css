@@ -17,7 +17,7 @@
     letter-spacing: 2px;
 }
 
-/* MENÚ DE NAVEGACIÓN dentro del navbar */
+/* MENÚ DE NAVEGACIÓN dentro del navbar superior */
 .navbar-menu {
     display: flex;
     gap: 2rem;
@@ -62,47 +62,50 @@
     gap: 1.5rem;
 }
 
-.notification-btn {
-    position: relative;
+/* Estilo para el ícono del usuario */
+.dropdown .btn {
     background: none;
     border: none;
-    font-size: 1.5rem;
-    color: white;
     cursor: pointer;
-    transition: color 0.3s ease;
+    color: white;
+    font-size: 1.5rem;
 }
 
-.notification-btn:hover {
-    color: #0288d1; /* Color azul más oscuro al hacer hover */
-}
-
-.notification-badge {
+/* Estilo para el menú desplegable */
+.dropdown-menu {
+    background-color: #1b7783; /* Mismo color que el navbar */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Oculto por defecto */
     position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: #d32f2f; /* Rojo para las notificaciones */
+    top: 100%; /* Mostrar debajo del ícono */
+    left: 0;
+    min-width: 180px;
+    list-style: none; /* Eliminar viñetas */
+    padding: 0; /* Eliminar padding */
+}
+
+/* Eliminar viñetas del dropdown */
+.dropdown-menu .dropdown-item {
     color: white;
-    border-radius: 50%;
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
-}
-
-/* Imagen de perfil */
-.user-profile img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    border: 2px solid white; /* Borde blanco para la imagen */
-}
-
-.user-profile span {
-    color: white;
-    font-weight: 600;
-    margin-left: 8px;
-}
-
-/* Estilo del enlace del logo */
-.navbar-brand {
+    font-size: 1rem;
+    padding: 10px 20px;
     text-decoration: none;
-    color: inherit;
+    display: block;
+}
+
+/* Hover de los items del dropdown */
+.dropdown-menu .dropdown-item:hover {
+    background-color: #66c5eb; /* Color al pasar el ratón */
+}
+
+/* Mostrar el menú desplegable cuando se activa el dropdown (con Bootstrap) */
+.dropdown-menu.show {
+    display: block;
+}
+
+/* Estilo para el ícono de usuario */
+.dropdown-item i {
+    margin-right: 8px;
 }

@@ -10,7 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastrModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -26,7 +26,6 @@ export class LoginComponent {
     this.authService.login(usuarioRequest).subscribe({
       next: (response) => {
         this.toastr.success('Login exitoso');
-        // Redirigir al componente de selección de canal
         this.router.navigate(['/seleccionar-canal'], { queryParams: { email: this.email } });
       },
       error: (err) => {

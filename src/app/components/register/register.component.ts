@@ -5,6 +5,7 @@
   import { FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
   import { FirmaUsarioService } from '../../services/firma-usario.service';
   import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
   @Component({
     selector: 'app-register',
@@ -37,6 +38,7 @@
     constructor(
       private authService: AuthService,
       private router: Router,
+      private toastr: ToastrService,
       private firmaUsuarioService: FirmaUsarioService
     ) { }
 
@@ -67,6 +69,7 @@
 
       if (!this.usuarioRequest.email || !this.usuarioRequest.password || this.usuarioRequest.password !== this.confirmPassword) {
         this.mensajeError = 'Las contraseñas no coinciden o faltan campos obligatorios.';
+        this.toastr.error('Las contraseñas no coinciden o faltan campos obligatorios');
         this.cargando = false;
         return;
       }
@@ -77,9 +80,11 @@
 
           if (response.codigo === 0) {
             this.mensajeExito = 'Usuario registrado con éxito. Por favor, inicia sesión.';
+            this.toastr.success('Usuario registrado con éxito.');
             this.router.navigate(['/login']);
           } else {
             this.mensajeError = response.mensaje || 'Hubo un error al registrar el usuario';
+            this.toastr.error('Usuario no registrado.');
           }
         },
         (error) => {

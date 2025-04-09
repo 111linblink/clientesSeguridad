@@ -1,35 +1,52 @@
-<!-- NAVBAR SUPERIOR -->
 <nav class="top-navbar">
     <div class="navbar-left">
         <a href="/" class="navbar-brand">
-            <h1>Clientes </h1> <!-- Nuevo nombre -->
+            <h1>Clientes</h1> <!-- Nuevo nombre -->
         </a>
     </div>
     
     <!-- MENÚ DE NAVEGACIÓN dentro del navbar superior -->
     <div class="navbar-menu">
-        <a href="/crearCliente" class="nav-link" id="create-link">
+        <a href="/crearCliente" class="nav-link">
             <i class="fas fa-user-plus"></i> Crear Cliente
         </a>
-        <a href="/listarClientes" class="nav-link" id="list-link">
+        <a href="/listarClientes" class="nav-link">
             <i class="fas fa-list"></i> Listar Clientes
         </a>
-        <a href="/actualizarCliente" class="nav-link" id="update-link">
+        <a href="/actualizarCliente" class="nav-link">
             <i class="fas fa-edit"></i> Actualizar Cliente
         </a>
     </div>
 
-    <div class="navbar-right">
-        <button class="notification-btn">
-            <i class="fas fa-bell"></i>
-            <span class="notification-badge">3</span>
+    <!-- Menú desplegable de usuario -->
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" 
+                type="button" 
+                id="userDropdown" 
+                aria-expanded="false" 
+                data-bs-toggle="dropdown">
+            <i class="fas fa-user"></i>
         </button>
-        
-        <div class="user-profile">
-            <img src="profile.jpg" alt="Usuario">
-        </div>
+        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+            <li *ngIf="!isAuthenticated()">
+                <a class="dropdown-item" href="/login">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                </a>
+            </li>
+            <li *ngIf="isAuthenticated()">
+                <a class="dropdown-item" href="/miCuenta">
+                    <i class="fas fa-user-circle"></i> Mi cuenta
+                </a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li *ngIf="isAuthenticated()">
+                <a class="dropdown-item" (click)="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>
 
-<!-- Agregar íconos FontAwesome (si no lo tienes ya) -->
+<!-- Agregar íconos FontAwesome -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>

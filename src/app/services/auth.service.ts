@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
+import {jwtDecode} from 'jwt-decode';
+import { tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ export class AuthService {
   private authApiUrl = 'http://localhost:8035/api/auth'; // Nueva URL para autenticación
   private resApiUrl='http://localhost:8035/api/usuarios'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router : Router) { }
 
   // Método para iniciar sesión
   login(usuariosRequest: any): Observable<string> {
@@ -37,6 +40,13 @@ export class AuthService {
     return this.http.post(`${this.authApiUrl}/verificar-otp`, { email: otpRequest.email, otp: otpRequest.otp }, { responseType: 'text' }).pipe(
       catchError((error) => {
         return throwError('Hubo un error al intentar verificar el OTP');
+      }),
+      tap((token: string) => {
+        this.setToken(token); // Guarda el token cuando la autenticación es exitosa
+        const userEmail = this.getUsuario()?.email; // Obtener el correo del token decodificado
+        if (userEmail) {
+          sessionStorage.setItem('userEmail', userEmail); // Guardar el correo en sessionStorage
+        }
       })
     );
   }
@@ -55,7 +65,57 @@ export class AuthService {
       return this.http.post(`${this.resApiUrl}/restablecer-contrasena`, { token, nuevaContrasena });
     }
   
-  
+  //Verificar autenticación
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+
+  // Método para cerrar sesión
+  logout(): void {
+    sessionStorage.removeItem('token'); // Eliminar el token del sessionStorage
+    console.log('Token eliminado, redirigiendo al login...'); // Depuración
+    
+    // Forzar una actualización de la UI
+    setTimeout(() => {
+      this.router.navigate(['/login']).then((success) => {
+        if (success) {
+          console.log('Redirección al login exitosa.'); // Depuración
+        } else {
+          console.error('Error al redirigir al login.'); // Depuración
+        }
+      });
+    }, 100); // Esperar un poco para que el cambio en sessionStorage se refleje
+  }
+
+  setToken(token: string): void {
+    sessionStorage.setItem('token', token); // Guardar el token en sessionStorage
+    console.log('Token guardado en sessionStorage:', token); // Depuración
+  }
+
+      // Método para obtener el token desde el localStorage
+  getToken(): string | null {
+    return sessionStorage.getItem('token'); // Obtener el token desde sessionStorage
+  }
+
+  getUsuario(): any {
+    const token = this.getToken();
+    if (token) {
+      try {
+        const decodedToken: any = jwtDecode(token); // Decodifica el token
+        return {
+          email: decodedToken.email,
+        };
+      } catch (error) {
+        console.error('Error al decodificar el token:', error);
+        return null;
+      }
+    }
+    return null;
+  }
+
+
+
+
   
   
 }

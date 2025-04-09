@@ -1,0 +1,81 @@
+/* Contenedor principal */
+.reset-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo del formulario */
+  .reset-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header del formulario */
+  .header-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Icono del header */
+  .header-group .icon {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  /* Título del formulario */
+  .header-group h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+  }
+  
+  /* Grupo de campos */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Label */
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  /* Input */
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Acciones del formulario */
+  .form-actions {
+    text-align: center;
+  }
+  
+  /* Botón */
+  .btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+  

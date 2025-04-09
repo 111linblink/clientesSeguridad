@@ -1,9 +1,11 @@
+/* Estilos del formulario (sin cambios) */
 .form-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   background: #f7f9fc;
+  padding-top: 20px;
 }
 
 .form-content {
@@ -13,7 +15,8 @@
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  max-width: 1200px;
+  max-width: 1000px;
+  min-height: 400px; /* Asegura una altura mínima */
   width: 100%;
   padding: 0px;
 }
@@ -96,7 +99,6 @@ label i {
   color: #aaa;
 }
 
-
 .error {
   font-size: 12px;
   color: #f44336;
@@ -107,6 +109,7 @@ label i {
   grid-column: span 2;
   text-align: center;
   margin-top: 15px;
+  
 }
 
 .btn-primary {
@@ -125,6 +128,7 @@ label i {
   background-color: #3b82f6;
 }
 
+/* Estilos del modal (sin cambios) */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -135,30 +139,10 @@ label i {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 400px;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0; /* Inicialmente oculto */
+  pointer-events: none; /* Inicialmente inactivo */
   transition: opacity 0.3s ease, pointer-events 0.3s ease;
+  z-index: 9999; /* Asegura que esté en el nivel más alto */
 }
 
 .modal-overlay.active {
@@ -244,3 +228,23 @@ label i {
   color: #333;
 }
 
+.form-actions {
+  text-align: center;
+  margin-top: 15px; /* Reducido el margen superior */
+}
+
+.btn-primary {
+  background-color: #1E40AF;
+  color: white;
+  padding: 12px 25px; /* Reducido el tamaño del botón */
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #3b82f6;
+}

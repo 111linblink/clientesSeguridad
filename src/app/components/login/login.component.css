@@ -1,146 +1,131 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #e8f4ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
 .login-container {
-    background: #ffffff;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 420px;
-    padding: 30px;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    margin: 20px auto; /* Esto ayuda a centrar y dar espacio en dispositivos móviles */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 10px;
+  background-color: #f4f7fc;
 }
 
-  .login-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .login-header {
-    text-align: center;
-    margin-bottom: 20px;
-    background-color: #6c5ce7;
-    color: white;
-    padding: 20px;
-    border-radius: 10px 10px 0 0;
-  }
-
-  .login-header .logo {
-    border: 200px; /* Para ver el espacio que ocupa */
-    width: 100px !important; /* Fuerza el tamaño */
+.login-form {
+  width: 100%;
+  max-width: 450px;
+  background: #ffffff;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo el contenido dentro del formulario */
+  justify-content: flex-start; /* Asegura que el contenido empieza desde arriba */
 }
 
-  .login-header h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
+.login-header {
+  text-align: center;
+  margin-bottom: 30px; /* Ajuste para espacio entre el logo y el formulario */
+}
 
-  .login-form {
-    width: 100%;
-  }
+.login-header .logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
 
-  .form-group {
-    margin-bottom: 25px;
-  }
+.login-header h2 {
+  font-size: 26px;
+  color: #333;
+  font-weight: bold;
+}
 
-  .form-group label {
-    display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 8px;
-  }
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
 
-  .form-group input {
-    width: 100%;
-    padding: 14px;
-    font-size: 1rem;
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    outline: none;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-  }
+label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
 
-  .form-group input:focus {
-    border-color: #6c5ce7;
-    background-color: #fff;
-  }
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  color: #333;
+  margin-bottom: 5px;
+}
 
-  .form-actions {
-    display: flex;
-    justify-content: center;
-  }
+input:focus {
+  outline: none;
+  border-color: #1E40AF;
+}
 
-  .form-actions button {
-    background-color: #6c5ce7;
-    color: #fff;
-    border: none;
-    padding: 14px 30px;
-    font-size: 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+input.invalid {
+  border-color: #f44336;
+}
 
-  .form-actions button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-  }
+.error-message {
+  font-size: 12px;
+  color: #f44336;
+}
 
-  .form-actions button:hover:not(:disabled) {
-    background-color: #5a4ac7;
-  }
+.form-actions {
+  text-align: center;
+}
 
-  .forgot-password, .mt-3 {
-    text-align: center;
-    margin-top: 15px;
-  }
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #1E40AF;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .forgot-password a {
-    color: #6c5ce7;
-    font-size: 0.9rem;
-    text-decoration: none;
-  }
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 
-  .forgot-password a:hover {
-    text-decoration: underline;
-  }
+button:hover {
+  background-color: #3b82f6;
+}
 
-  .error-message {
-    color: #e74c3c;
-    font-size: 0.875rem;
-    margin-top: 5px;
-  }
+.mt-3 {
+  text-align: center;
+  margin-top: 20px;
+}
 
-  @media (max-width: 600px) {
-    .login-container {
-      padding: 20px;
-    }
+.mt-3 a {
+  color: #1E40AF;
+  font-size: 14px;
+  text-decoration: none;
+}
 
-    .login-header h2 {
-      font-size: 1.6rem;
-    }
+.mt-3 a:hover {
+  text-decoration: underline;
+}
 
-    .form-group input {
-      font-size: 0.9rem;
-    }
+.forgot-password {
+  text-align: center;
+  margin-top: 15px;
+}
 
-    .form-actions button {
-      font-size: 0.9rem;
-    }
-  }
+.forgot-password a {
+  color: #1E40AF;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}

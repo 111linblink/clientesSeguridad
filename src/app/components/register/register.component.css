@@ -1,203 +1,163 @@
-/* Estilos base (igual que el login) */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #e8f4ff;
+.register-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.register-container {
+    align-items: flex-start;
+    height: 100vh;
+    padding: 10px;
+    background-color: #f4f7fc;
+  }
+  
+  .register-form {
+    width: 100%;
+    max-width: 450px;
     background: #ffffff;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 420px;
-    padding: 30px;
+    padding: 40px;
+    box-sizing: border-box;
     border-radius: 15px;
-    transition: all 0.3s ease;
-    margin: 20px auto;
-}
-
-.register-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.register-header {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todo el contenido dentro del formulario */
+    justify-content: flex-start; /* Asegura que el contenido empieza desde arriba */
+  }
+  
+  .register-header {
     text-align: center;
+    margin-bottom: 30px; /* Ajuste para espacio entre el logo y el formulario */
+  }
+  
+  .register-header .logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .register-header h2 {
+    font-size: 26px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .form-group {
     margin-bottom: 20px;
-    background-color: #6c5ce7;
-    color: white;
-    padding: 20px;
-    border-radius: 10px 10px 0 0;
+    width: 100%;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #1E40AF;
+  }
+  
+  input.invalid {
+    border-color: #f44336;
+  }
+  
+  .error-message {
+    font-size: 12px;
+    color: #f44336;
+  }
+  
+  .form-actions {
+    text-align: center;
+  }
+  .header-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.register-header .logo {
-    width: 100px;
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+  
+  .submit-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #1E40AF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .submit-button:hover {
+    background-color: #3b82f6;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .login-link a {
+    color: #1E40AF;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .mt-3 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .mt-3 a {
+    color: #1E40AF;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .mt-3 a:hover {
+    text-decoration: underline;
+  }
+  
+  .header-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-group .logo {
+    width: 80px;
+    height: 80px;
     margin-bottom: 10px;
 }
 
-.register-header h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.register-form {
-    width: 100%;
-}
-
-.form-group {
-    margin-bottom: 25px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 14px;
-    font-size: 1rem;
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    outline: none;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.form-group input:focus {
-    border-color: #6c5ce7;
-    background-color: #fff;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.submit-button {
-    background-color: #6c5ce7;
-    color: #fff;
-    border: none;
-    padding: 14px 30px;
-    font-size: 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-}
-
-.submit-button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-}
-
-.submit-button:hover:not(:disabled) {
-    background-color: #5a4ac7;
-}
-
-.error-message {
-    color: #e74c3c;
-    font-size: 0.875rem;
-    margin-top: 5px;
-}
-
-.success-message {
-    color: #2ecc71;
-    font-size: 0.875rem;
-    margin-top: 5px;
-    margin-bottom: 15px;
+.header-group h2 {
+    margin: 0;
+    font-size: 1.5rem;
     text-align: center;
 }
-
-.login-link {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.login-link a {
-    color: #6c5ce7;
-    text-decoration: none;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-    .register-container {
-        padding: 20px;
-    }
-
-    .register-header h2 {
-        font-size: 1.6rem;
-    }
-
-    .form-group input {
-        font-size: 0.9rem;
-    }
-
-    .submit-button {
-        font-size: 0.9rem;
-    }
-}
-
-/* Mensajes de error y éxito */
-.error-message {
-    background-color: #ffe0e0;
-    color: #d8000c;
-    border: 1px solid #d8000c;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  .success-message {
-    background-color: #e0ffe4;
-    color: #4f8a10;
-    border: 1px solid #4f8a10;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  /* Animación para que aparezcan suavemente */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Iconos para los mensajes */
-  .error-message::before {
-    content: '⚠️';
-    font-size: 1.2em;
-  }
-  
-  .success-message::before {
-    content: '✅';
-    font-size: 1.2em;
-  }
-  

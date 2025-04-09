@@ -1,9 +1,10 @@
 .form-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   background: #f7f9fc;
+  padding-top: 20px;
 }
 
 .form-content {
@@ -14,8 +15,10 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   max-width: 800px; /* Ajuste del tamaño */
+  max-height: 1000px;
   width: 90%;
   padding: 30px;
+  box-sizing: border-box;
 }
 
 .icon-container {
@@ -64,7 +67,7 @@
 
 .input-icon i {
   position: absolute;
-  top: 50%;
+  top: 60%;
   right: 15px;
   transform: translateY(-50%);
   font-size: 16px; /* Reducido el tamaño del icono */

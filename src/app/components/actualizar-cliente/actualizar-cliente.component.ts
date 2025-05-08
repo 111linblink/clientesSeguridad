@@ -63,18 +63,19 @@ export class ActualizarClienteComponent implements OnInit {
   }
 
   onSubmit() {
+    
     const actualizarCli: ActualizarCliente = {
       nombre: this.nombre,
       newName: this.newName,
       apellido: this.apellido,
-      correoElectronico: this.correoElectronico, 
+      correoElectronico: this.correoElectronico,
       nuevoCorreoElectronico: this.nuevoCorreoElectronico,
       telefono: this.telefono,
       direccion: this.direccion,
       estado: this.estado,
       firma: this.firma,
     };
-
+  
     const firmaActualizar: ClienteFirma = {
       nombre: this.nombre,
       newName: this.newName,
@@ -85,25 +86,28 @@ export class ActualizarClienteComponent implements OnInit {
       direccion: this.direccion,
       estado: this.estado,
     };
-
+  
     this.firmaService.generarFirmaActualizarCliente(firmaActualizar).subscribe(
       (firmaGenerada) => {
         actualizarCli.firma = firmaGenerada.firma;
-
-        //alert('Formulario para actualizar el cliente');
-        //alert('Formulario para firma del cliente');
-
-        //Actualizar cliente
+        // Actualizar cliente
         this.actualizarClienteService
           .actualizarCliente(actualizarCli)
           .subscribe(
             (response) => {
-              console.log('Cliente actualizado:', response);
-              this.toastr.success('Cliente actualizado con éxito');
-              this.clienteActualizado = actualizarCli; // Guarda los datos del cliente actualizado
+              if (response.codigo === 1) {
+                this.toastr.error(response.mensaje); // Mostrar el mensaje del backend
+              } else {
+                this.toastr.success('Cliente actualizado con éxito');
+                this.clienteActualizado = actualizarCli;
+              }
             },
             (error) => {
-              this.toastr.error('Error al actualizar el cliente');
+              if (error.error && error.error.mensaje) {
+                this.toastr.error(error.error.mensaje); // Mostrar el mensaje de error
+              } else {
+                this.toastr.error('Error desconocido al actualizar el cliente');
+              }
             }
           );
       },
@@ -112,6 +116,9 @@ export class ActualizarClienteComponent implements OnInit {
       }
     );
   }
+  
+  
+  
 
   cerrarModal() {
     this.clienteActualizado = null; // Limpiar los datos del cliente actualizado cuando se cierra el modal

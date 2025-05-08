@@ -63,6 +63,13 @@ export class CrearClienteComponent {
 
         this.crearClienteService.crearCliente(nuevoCliente).subscribe(
           (response) => {
+            if (response.codigo === 1) {
+              // Si el código es 1, significa que hubo un error en el backend
+              this.toastr.error(response.mensaje);
+              return;
+            }
+
+            // Si el código es 0, la creación fue exitosa
             this.clienteCreado = response;
             this.modalVisible = true;
 
@@ -74,8 +81,15 @@ export class CrearClienteComponent {
             this.telefono = '';
           },
           (error) => {
+            // Aquí accedemos correctamente a la respuesta de error
             console.error('Error al crear el cliente:', error);
-            this.toastr.error('Error al crear el cliente por.', error);
+
+            // Acceder a error.error.mensaje y mostrarlo en el Toastr
+            if (error.error && error.error.mensaje) {
+              this.toastr.error(error.error.mensaje); // Muestra el mensaje del backend
+            } else {
+              this.toastr.error('Error desconocido al crear el cliente');
+            }
           }
         );
       },
@@ -85,6 +99,8 @@ export class CrearClienteComponent {
       }
     );
   }
+
+
 
   showErrorMessages(formulario: any) {
     if (formulario.controls.nombre?.invalid) {

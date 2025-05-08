@@ -1,6 +1,65 @@
-<!-- mi-cuenta.component.html -->
 <div class="account-info">
-    <h2>Mi Cuenta</h2>
-    <p><strong>Correo: </strong>{{ userEmail }}</p>
+  <h2>
+    <span class="account-icon">
+      <i class="fas fa-user-circle"></i>
+    </span>
+    Mi Cuenta
+  </h2>
+  <p><strong>Correo: </strong>{{ userEmail }}</p>
+
+  <!-- Botón para habilitar el cambio de contraseña -->
+  <button *ngIf="!cambiarContrasenaHabilitado" (click)="habilitarCambioContrasena()">Cambiar Contraseña</button>
+
+  <!-- Formulario para cambiar la contraseña, visible solo cuando se habilita -->
+  <div *ngIf="cambiarContrasenaHabilitado" class="change-password-container" #formContainer>
+    <h3>Cambiar Contraseña</h3>
+    <form (ngSubmit)="cambiarContrasena()" #changePasswordForm="ngForm">
+      
+      <div class="form-group">
+        <label for="nuevaContrasena">Nueva Contraseña:</label>
+        <div class="input-icon">
+          <input [type]="passwordVisible ? 'text' : 'password'" 
+                 id="nuevaContrasena" 
+                 [(ngModel)]="nuevaContrasena" 
+                 name="nuevaContrasena" 
+                 required 
+                 #nuevaContrasenaInput="ngModel" />
+          <i (click)="togglePasswordVisibility()"
+             [ngClass]="{'fa-eye': passwordVisible, 'fa-eye-slash': !passwordVisible}"
+             class="fas"></i>
+        </div>
+        <div *ngIf="nuevaContrasenaInput.invalid && nuevaContrasenaInput.touched" class="validation-error">
+          La nueva contraseña es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmacionContrasena">Confirmar Contraseña:</label>
+        <div class="input-icon">
+          <input [type]="passwordVisible ? 'text' : 'password'" 
+                 id="confirmacionContrasena" 
+                 [(ngModel)]="confirmacionContrasena" 
+                 name="confirmacionContrasena" 
+                 required 
+                 #confirmacionContrasenaInput="ngModel" />
+          <i (click)="togglePasswordVisibility()"
+             [ngClass]="{'fa-eye': passwordVisible, 'fa-eye-slash': !passwordVisible}"
+             class="fas"></i>
+        </div>
+        <div *ngIf="confirmacionContrasenaInput.invalid && confirmacionContrasenaInput.touched" class="validation-error">
+          La confirmación de la contraseña es obligatoria.
+        </div>
+        <div *ngIf="confirmacionContrasena !== nuevaContrasena && confirmacionContrasenaInput.touched" class="validation-error">
+          Las contraseñas no coinciden.
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" 
+                [disabled]="nuevaContrasena !== confirmacionContrasena || nuevaContrasenaInput.invalid || confirmacionContrasenaInput.invalid">
+          Actualizar Contraseña
+        </button>
+      </div>
+    </form>
   </div>
-  
+</div>

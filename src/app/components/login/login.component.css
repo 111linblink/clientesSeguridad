@@ -1,3 +1,4 @@
+/* Contenedor principal */
 .login-container {
   display: flex;
   justify-content: center;
@@ -7,6 +8,7 @@
   background-color: #f4f7fc;
 }
 
+/* Estilo del formulario de login */
 .login-form {
   width: 100%;
   max-width: 450px;
@@ -15,15 +17,12 @@
   box-sizing: border-box;
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra todo el contenido dentro del formulario */
-  justify-content: flex-start; /* Asegura que el contenido empieza desde arriba */
 }
 
+/* Estilo del encabezado */
 .login-header {
   text-align: center;
-  margin-bottom: 30px; /* Ajuste para espacio entre el logo y el formulario */
+  margin-bottom: 30px;
 }
 
 .login-header .logo {
@@ -38,6 +37,7 @@
   font-weight: bold;
 }
 
+/* Estilo para los campos del formulario */
 .form-group {
   margin-bottom: 20px;
   width: 100%;
@@ -50,6 +50,7 @@ label {
   display: block;
 }
 
+/* Estilo de los inputs */
 input {
   width: 100%;
   padding: 14px;
@@ -59,6 +60,7 @@ input {
   background-color: #f9f9f9;
   color: #333;
   margin-bottom: 5px;
+  box-sizing: border-box;
 }
 
 input:focus {
@@ -66,19 +68,43 @@ input:focus {
   border-color: #1E40AF;
 }
 
-input.invalid {
-  border-color: #f44336;
+/* Contenedor de contraseña con ícono */
+.password-container {
+  position: relative;
+  width: 100%;
 }
 
+.password-container input {
+  padding-right: 40px; /* Espacio para el ícono */
+}
+
+.password-container i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #829bee;
+  font-size: 18px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo para los mensajes de error */
 .error-message {
   font-size: 12px;
   color: #f44336;
 }
 
+/* Estilo para las acciones del formulario */
 .form-actions {
   text-align: center;
+  margin-top: 20px;
 }
 
+/* Estilo para el botón */
 button {
   width: 100%;
   padding: 14px;
@@ -100,14 +126,15 @@ button:hover {
   background-color: #3b82f6;
 }
 
+/* Estilo para los enlaces */
 .mt-3 {
   text-align: center;
   margin-top: 20px;
+  font-size: 14px;
 }
 
 .mt-3 a {
   color: #1E40AF;
-  font-size: 14px;
   text-decoration: none;
 }
 

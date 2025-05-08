@@ -26,6 +26,9 @@ import { ToastrService } from 'ngx-toastr';
     cargando: boolean = false;
     passwordPattern = '^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$';
 
+    passwordVisible: boolean = false; // Controla la visibilidad de las contraseñas
+
+
     // Validador de contraseña (min 8 caracteres, al menos 1 mayúscula, 1 número, 1 carácter especial)
     passwordPatternValidator(): ValidatorFn {
       return (control: AbstractControl): ValidationErrors | null => {
@@ -64,37 +67,42 @@ import { ToastrService } from 'ngx-toastr';
       );
     }
 
-    onRegister() {
-      this.cargando = true;
-
-      if (!this.usuarioRequest.email || !this.usuarioRequest.password || this.usuarioRequest.password !== this.confirmPassword) {
-        this.mensajeError = 'Las contraseñas no coinciden o faltan campos obligatorios.';
-        this.toastr.error('Las contraseñas no coinciden o faltan campos obligatorios');
-        this.cargando = false;
-        return;
-      }
-
-      this.authService.register(this.usuarioRequest).subscribe(
-        (response) => {
-          this.cargando = false;
-
-          if (response.codigo === 0) {
-            this.mensajeExito = 'Usuario registrado con éxito. Por favor, inicia sesión.';
-            this.toastr.success('Usuario registrado con éxito.');
-            this.router.navigate(['/login']);
-          } else {
-            this.mensajeError = response.mensaje || 'Hubo un error al registrar el usuario';
-            this.toastr.error('Usuario no registrado.');
-          }
-        },
-        (error) => {
-          this.cargando = false;
-          this.mensajeError = 'Hubo un error al intentar registrar el usuario: ' + (error.message || 'error desconocido');
-        }
-      );
+    // Método para enviar el formulario de registro
+  onRegister() {
+    this.cargando = true;
+    this.mensajeError = '';
+    this.mensajeExito = '';
+  
+    // Validación de contraseñas
+    if (!this.usuarioRequest.email || !this.usuarioRequest.password || this.usuarioRequest.password !== this.confirmPassword) {
+      this.toastr.error( 'Las contraseñas no coinciden o faltan campos obligatorios.');
+      this.cargando = false;
+      return;
     }
+  
+    this.authService.register(this.usuarioRequest).subscribe(
+      (response) => {
+        this.cargando = false;
+  
+        if (response.codigo === 0) {
+          this.toastr.success(response.mensaje || 'Usuario registrado con éxito');
+          this.router.navigate(['/login']);  // Opcional: podrías redirigir después de un delay
+        } else {
+          this.toastr.error( response.mensaje || 'Hubo un error al registrar el usuario.');
+        }
+      },
+      (error) => {
+        this.cargando = false;
+        this.toastr.error('Error del servidor: ' + (error.error?.mensaje || error.message || 'desconocido'));
+      }
+    );
+  }
 
     submit() {
       this.generateSignature();
+    }
+
+    togglePasswordVisibility(): void {
+      this.passwordVisible = !this.passwordVisible;
     }
   }

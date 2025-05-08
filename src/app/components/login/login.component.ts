@@ -17,6 +17,8 @@ import { ToastrModule } from 'ngx-toastr';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  passwordVisible: boolean = false; // Controla la visibilidad de las contraseñas
+
 
   constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) {}
 
@@ -32,5 +34,9 @@ export class LoginComponent {
         this.toastr.error('Error en el login: ' + err.error);
       }
     });
+  }
+
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
   }
 }

@@ -25,16 +25,21 @@
 
       <div class="form-group">
         <label for="password">Contraseña</label>
-        <input
-          type="password"
-          id="password"
-          [(ngModel)]="password"
-          name="password"
-          required
-          minlength="6"
-          #passwordField="ngModel"
-          placeholder="********"
-        />
+        <div class="password-container">
+          <input
+            [type]="passwordVisible ? 'text' : 'password'"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+            minlength="6"
+            #passwordField="ngModel"
+            placeholder="********"
+          />
+          <i (click)="togglePasswordVisibility()"
+             [ngClass]="{'fa-eye': passwordVisible, 'fa-eye-slash': !passwordVisible}"
+             class="fas"></i>
+        </div>
         <div *ngIf="passwordField.invalid && passwordField.touched" class="error-message">
           <small *ngIf="passwordField.errors?.['required']">La contraseña es obligatoria.</small>
           <small *ngIf="passwordField.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</small>

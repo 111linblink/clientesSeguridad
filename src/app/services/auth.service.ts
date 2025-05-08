@@ -43,13 +43,26 @@ export class AuthService {
       }),
       tap((token: string) => {
         this.setToken(token); // Guarda el token cuando la autenticación es exitosa
-        const userEmail = this.getUsuario()?.email; // Obtener el correo del token decodificado
-        if (userEmail) {
-          sessionStorage.setItem('userEmail', userEmail); // Guardar el correo en sessionStorage
+  
+        try {
+          const decodedToken: any = jwtDecode(token); // Decodifica el token
+          console.log('Token decodificado:', decodedToken); // Verifica el contenido decodificado
+        
+          const userEmail = decodedToken.sub;  // Accede al campo "sub" que contiene el correo
+          if (userEmail) {
+            sessionStorage.setItem('userEmail', userEmail);  // Guarda el correo en sessionStorage
+            console.log('Correo guardado en sessionStorage:', userEmail); // Depuración
+          } else {
+            console.error('No se encontró el campo "sub" en el token');
+          }
+        } catch (error) {
+          console.error('Error al decodificar el token:', error);
         }
+        
       })
     );
   }
+  
 
   recuperarContrasena(email: string): Observable<any> {
     return this.http.post(`${this.resApiUrl}/recuperar-contrasena`, { email });
@@ -111,7 +124,27 @@ export class AuthService {
       }
     }
     return null;
-  }
+}
+
+// En AuthService
+cambiarContrasena(nuevaContrasena: string): Observable<any> {
+  const token = sessionStorage.getItem('token');  // O 'localStorage.getItem' dependiendo de tu implementación
+
+  console.log('Token antes de enviar la solicitud:', token);  // Agrega este log para ver si el token es null o tiene valor
+
+  if (!token) {
+    return throwError('No autenticado');
+  }
+
+  return this.http.post<any>(`${this.authApiUrl}/cambiar-contrasena`, {
+    token: token,
+    nuevaContrasena: nuevaContrasena
+  });
+}
+
+
+
+
 
 
 
